@@ -27,25 +27,33 @@ import heroImg from '../assets/deenpic.png';
 
 				<div class="bottom-content">
 					<div class="description-text">
-						<p class="animate-in delay-1">
-							I am an Engineering Science student from Ngee Ann Polytechnic. I aspire to be an engineer that leverages on empathy and human-centered design to develop products that change the way we live for the better!
-						</p>
-						<a href="/academic&experience" class="btn animate-in delay-1">My Academic Journey and Experience!</a>
+						<div class="animate-in delay-1">
+							<p>
+								I am an Engineering Science student from Ngee Ann Polytechnic. I aspire to be an engineer that leverages on empathy and human-centered design to develop products that change the way we live for the better!
+							</p>
+							<a href="/academic&experience" class="btn">My Academic Journey and Experience!</a>
+						</div>
 						
-						<p class="animate-in delay-2">
-							I have immersed myself in research and development (R&D) projects since Secondary School and am still going at it! My projects cover a wide range of domains from agriculture to experimental physics. 
-						</p>
-						<a href="/projects" class="btn animate-in delay-2">Projects that I have worked on!</a>
+						<div class="animate-in delay-2">
+							<p>
+								I have immersed myself in research and development (R&D) projects since Secondary School and am still going at it! My projects cover a wide range of domains from agriculture to experimental physics. 
+							</p>
+							<a href="/projects" class="btn">Projects that I have worked on!</a>
+						</div>
 						
-						<p class="animate-in delay-3">
-							Beyond my passion for STEM, I am also motivated to serve my community both locally and overseas. I have experience organising volunteering initiatives as well as leading an overseas service learning trip! <br> I believe that as a leader, I am responsible for serving the people who I am leading which makes leadership another form of service to me.
-						</p>
-						<a href="/sl" class="btn animate-in delay-3">My Service and Leadership Experience!</a>
+						<div class="animate-in delay-3">
+							<p>
+								Beyond my passion for STEM, I am also motivated to serve my community both locally and overseas. I have experience organising volunteering initiatives as well as leading an overseas service learning trip! <br> I believe that as a leader, I am responsible for serving the people who I am leading which makes leadership another form of service to me.
+							</p>
+							<a href="/sl" class="btn">My Service and Leadership Experience!</a>
+						</div>
 						
-						<p class="animate-in delay-4">
-							Feel free to click this button if you are interested in browsing my Achievements and Certificates!
-						</p>
-						<a href="/achievements" class="btn animate-in delay-4">My Achievements and Certificates!</a>
+						<div class="animate-in delay-4">
+							<p>
+								Feel free to click this button if you are interested in browsing my Achievements and Certificates!
+							</p>
+							<a href="/achievements" class="btn">My Achievements and Certificates!</a>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -55,8 +63,17 @@ import heroImg from '../assets/deenpic.png';
 </html>
 
 <style>
-/* --- NEW ANIMATION LOGIC --- */
+/* --- 1. GLOBAL WRAPPER FIX --- */
+main {
+	/* Pushes content down exactly enough to clear the fixed header */
+	margin-top: 80px; 
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 
+/* --- 2. ANIMATION LOGIC --- */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -69,40 +86,26 @@ import heroImg from '../assets/deenpic.png';
 }
 
 .animate-in {
-  opacity: 0; /* Starts invisible */
-  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Staggering Delays */
-.delay-1 { animation-delay: 0s; }
-.delay-2 { animation-delay: 0s; }
-.delay-3 { animation-delay: 0s; }
-.delay-4 { animation-delay: 0s; }
+/* Staggered Delays for a Professional Flow */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
 
-/* --- YOUR EXISTING STYLES --- */
-
+/* --- 3. HERO & CONTENT STYLES --- */
 .hero-section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 2rem;
+	/* Removed top padding to prevent the weird gap */
+	padding: 0 2rem 4rem 2rem; 
 	max-width: 1000px;
 	margin: 0 auto;
-}
-
-.hero-image-circle {
-  width: 500px;         
-  aspect-ratio: 1 / 1;   
-  border-radius: 50%;     
-  overflow: hidden;       
-  border: 4px solid #0056b3; 
-}
-
-.hero-image-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;      
-  object-position: center; 
 }
 
 .top-row {
@@ -112,11 +115,31 @@ import heroImg from '../assets/deenpic.png';
   width: 100%;
 }
 
-.bottom-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.hero-image-circle {
   width: 100%;
+  max-width: 450px; /* Adjusted for better mobile/desktop balance */
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #0056b3;
+  flex-shrink: 0;
+}
+
+.hero-image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.intro-box {
+	text-align: left;
+}
+
+.intro-box h5 {
+	font-size: 1.5rem;
+	line-height: 1.4;
+	color: #333;
 }
 
 .description-text {
@@ -127,20 +150,20 @@ import heroImg from '../assets/deenpic.png';
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
   border-top: 4px solid #0056b3; 
   text-align: center;
-  line-height: 1.6;
+  line-height: 1.8;
 }
 
 .btn {
-  display: block;      
-  width: 100%;         
-  max-width: 450px;    
-  margin: 1.5rem auto; 
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  margin: 1.5rem auto 2.5rem auto;
   text-align: center;
-  text-decoration: none; 
+  text-decoration: none;
   color: white;
-  font-weight: 600;      
+  font-weight: 600;
   padding: 1rem;
-  background: #0056b3;   
+  background: #0056b3;
   border-radius: 6px;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -148,7 +171,25 @@ import heroImg from '../assets/deenpic.png';
 
 .btn:hover {
   background: #004494;
-  transform: translateY(-2px); 
+  transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0,86,179,0.3);
+}
+
+/* --- 4. MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+	.top-row {
+		flex-direction: column;
+		text-align: center;
+		gap: 1.5rem;
+	}
+	.intro-box {
+		text-align: center;
+	}
+	.hero-image-circle {
+		max-width: 280px;
+	}
+	main {
+		margin-top: 100px; /* Slightly more space for the stacked mobile header */
+	}
 }
 </style>
