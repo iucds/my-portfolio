@@ -173,15 +173,24 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 </html>
 
 <style>
-	main { 
-	max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+	/* 1. THE TOP GAP FIX */
+	main {
+		/* Adjust this to match your Header height (usually 80px) */
+		margin-top: 80px; 
+		max-width: 1200px; 
+		margin-left: auto; 
+		margin-right: auto; 
+		padding: 4rem 2rem; 
+	}
+
 	.projects-hero { text-align: center; margin-bottom: 4rem; }
 	.projects-hero h1 { color: #0056b3; font-size: 2.5rem; }
 
 	.projects-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-		gap: 2.5rem;
+		/* Using auto-fill ensures cards wrap naturally */
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 2rem;
 	}
 
 	/* --- FADE-UP CORE STYLES --- */
@@ -192,8 +201,6 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 		border-top: 5px solid #0056b3;
 		cursor: pointer;
-		
-		/* Initial hidden state */
 		opacity: 0;
 		transform: translateY(40px);
 		transition: 
@@ -202,13 +209,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			box-shadow 0.3s ease;
 	}
 
-	/* Revealing state triggered by JS */
 	.project-card.reveal {
 		opacity: 1;
 		transform: translateY(0);
 	}
 
-	/* Hover effect (ensures it doesn't conflict with animation) */
 	.project-card.reveal:hover {
 		transform: translateY(-8px);
 		box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15);
@@ -216,8 +221,42 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 	.project-image { height: 160px; padding: 1rem; }
 	.tag { background: #0056b3; color: white; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold; }
+	
+	/* Justified text works well on desktop, but we'll relax it for mobile */
 	.project-content { padding: 1.5rem; text-align: justify; line-height: 1.6; }
 	.tech-label { font-family: monospace; color: #0056b3; font-weight: bold; margin-bottom: 0.5rem; }
+
+	/* --- MOBILE SPECIFIC FIXES --- */
+	@media (max-width: 768px) {
+		main {
+			margin-top: 100px; /* Slightly more space for stacked mobile headers */
+			padding: 2rem 1rem;
+		}
+
+		.projects-hero h1 {
+			font-size: 1.8rem;
+		}
+
+		.projects-grid {
+			/* On small phones, use a single column */
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+
+		.project-content {
+			/* Justified text can look "gappy" on very narrow screens */
+			text-align: left;
+		}
+
+		dialog {
+			width: 95%;
+			padding: 0;
+		}
+
+		.modal-header h2 {
+			font-size: 1.1rem;
+		}
+	}
 
 	/* Modal Styles */
 	dialog {
