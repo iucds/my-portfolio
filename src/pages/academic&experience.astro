@@ -53,7 +53,7 @@ import { Image } from 'astro:assets';
 										<li>Science Talent Development Programme (2019-2022)</li>
 									</ul>
 									
-									<b>Leadership (Active Citizenship Education Leadership Board)</b>:  <br>
+									<b>Leadership (Active Citizenship Education Leadership Board)</b>:  <br>
 									<ul id="bullet-list">
 										<li>Junior ACE Leader (2020-2021) </li>
 										<li>Senior ACE Leader (2021-2022) </li>
@@ -72,8 +72,8 @@ import { Image } from 'astro:assets';
 							<div class="details">
 								<p>
 									<b>Cummulative GPA</b>: 4.0 <br>
-									<b>Diploma Plus</b>: Certificate in Advanced Engineering Mathematics (CAEM)<br> 
-									<b>Minors</b>: 
+									<b>Diploma Plus</b>: Certificate in Advanced Engineering Mathematics (CAEM)<br> 
+									<b>Minors</b>: 
 									<ul id="bullet-list">
 										<li>Cybersecurity</li>
 										<li>Social Leadership</li>
@@ -131,19 +131,12 @@ import { Image } from 'astro:assets';
 
 
 <style>
-	/* --- THE FIX --- */
-	main {
-		margin-top: 80px; /* Pushes content down to clear the fixed header */
-		width: 100%;
-	}
-
 	.timeline-wrapper {
-		max-width: 1000px;
-		margin: 0 auto; /* Removed the 4rem top margin to prevent a double gap */
-		padding: 2rem;
+		max-width: 1000px; /* Matches your Hero section width */
+		/*margin: 4rem auto;
+		padding: 0 2rem;*/
 	}
 
-	/* --- EVERYTHING ELSE REMAINS THE SAME --- */
 	.section-title {
 		text-align: center;
 		color: #0056b3;
@@ -152,9 +145,10 @@ import { Image } from 'astro:assets';
 
 	.timeline-container {
 		position: relative;
-		padding-left: 50px; 
+		padding-left: 50px; /* Space for the vertical line */
 	}
 
+	/* Background line track */
 	.scroll-line {
 		position: absolute;
 		left: 20px;
@@ -165,6 +159,7 @@ import { Image } from 'astro:assets';
 		z-index: 0;
 	}
 
+	/* Active blue line that grows on scroll */
 	.scroll-line::after {
 		content: '';
 		position: absolute;
@@ -190,30 +185,32 @@ import { Image } from 'astro:assets';
 	}
 
 	.circle {
-		position: absolute;
-		left: -42px; 
-		top: 25px; 
-		width: 20px;
-		height: 20px;
-		background: white;
-		border: 4px solid #0056b3;
-		border-radius: 50%;
-		z-index: 2;
-		transition: all 0.4s ease;
-	}
+    position: absolute;
+    left: -42px; 
+    top: 25px; /* Adjust this to align with the first line of your text */
+    
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 4px solid #0056b3;
+    border-radius: 50%;
+    z-index: 2;
+    transition: all 0.4s ease;
+  }
 
-	.timeline-item.is-visible .circle {
-		background: #0056b3;
-		transform: scale(1.2);
-	}
+  /* Optional: Make the circle slightly larger when the section is active */
+  .timeline-item.is-visible .circle {
+    background: #0056b3;
+    transform: scale(1.2);
+  }
 
 	.content-card {
 		background: white;
 		padding: 2.5rem;
 		border-radius: 12px;
-		box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-		border-top: 4px solid #0056b3;
-		text-align: left;
+		box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* Soft shadow */
+		border-top: 4px solid #0056b3;           /* Top accent line */
+		text-align: left;                     /* Consistent with About page */
 		line-height: 1.6;
 	}
 
@@ -272,3 +269,5 @@ import { Image } from 'astro:assets';
 		container.style.setProperty('--scroll-height', `${percentage}%`);
 	});
 </script>
+
+can you fix the top gap but leave everything else alone
