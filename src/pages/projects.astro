@@ -173,6 +173,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 </html>
 
 <style>
+	/* --- 1. GLOBAL RESET & LAYOUT FIX --- */
+	*, *::before, *::after {
+		box-sizing: border-box; /* Prevents padding from breaking width */
+	}
+
 	html, body {
 		margin: 0;
 		padding: 0;
@@ -266,16 +271,12 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	}
 
 	.tech-label { 
-        font-family: monospace; 
-        color: #0056b3; 
-        background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
-        padding: 0.2rem 0.5rem;
-        border-radius: 4px;
-        font-weight: bold; 
-        font-size: 0.75rem;
-        margin: 0; /* Remove default paragraph margins */
-        z-index: 2;
-    }
+		font-family: monospace; 
+		color: #0056b3; 
+		font-weight: bold; 
+		margin-bottom: 0.5rem; 
+		font-size: 0.9rem;
+	}
 
 	/* --- 4. MOBILE RESPONSIVENESS (STRICT 1-COLUMN) --- */
 	@media (max-width: 850px) {
