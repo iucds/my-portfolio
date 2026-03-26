@@ -173,27 +173,31 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 </html>
 
 <style>
-	/* 1. THE TOP GAP FIX */
-	main {
-		/* Adjust this to match your Header height (usually 80px) */
-		margin-top: 80px; 
-		max-width: 1200px; 
-		margin-left: auto; 
-		margin-right: auto; 
-		padding: 4rem 2rem; 
+	/* 1. Global Reset to prevent padding from adding to width */
+	*, *::before, *::after {
+		box-sizing: border-box;
 	}
 
-	.projects-hero { text-align: center; margin-bottom: 4rem; }
+	main { 
+		max-width: 1200px; 
+		margin: 80px auto 0; /* 80px top margin to clear fixed header */
+		padding: 2rem; 
+		width: 100%;
+		overflow-x: hidden; /* Safety gate */
+	}
+
+	.projects-hero { text-align: center; margin-bottom: 4rem; padding: 0 1rem; }
 	.projects-hero h1 { color: #0056b3; font-size: 2.5rem; }
 
 	.projects-grid {
 		display: grid;
-		/* Using auto-fill ensures cards wrap naturally */
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		/* CHANGE: minmax(0, 1fr) prevents cards from pushing past the screen */
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 		gap: 2rem;
+		width: 100%;
 	}
 
-	/* --- FADE-UP CORE STYLES --- */
+	/* --- CARD STYLES --- */
 	.project-card {
 		background: white;
 		border-radius: 12px;
@@ -201,62 +205,54 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 		border-top: 5px solid #0056b3;
 		cursor: pointer;
+		width: 100%; /* Ensure card stays within grid cell */
+		
+		/* Fade-up Logic */
 		opacity: 0;
 		transform: translateY(40px);
-		transition: 
-			opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-			transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-			box-shadow 0.3s ease;
+		transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease;
 	}
 
-	.project-card.reveal {
-		opacity: 1;
-		transform: translateY(0);
+	.project-card.reveal { opacity: 1; transform: translateY(0); }
+
+	/* --- IMAGE FIX --- */
+	.project-image { 
+		height: 160px; 
+		width: 100%; 
+		padding: 1rem; 
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
-	.project-card.reveal:hover {
-		transform: translateY(-8px);
-		box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15);
-	}
-
-	.project-image { height: 160px; padding: 1rem; }
-	.tag { background: #0056b3; color: white; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold; }
-	
-	/* Justified text works well on desktop, but we'll relax it for mobile */
-	.project-content { padding: 1.5rem; text-align: justify; line-height: 1.6; }
-	.tech-label { font-family: monospace; color: #0056b3; font-weight: bold; margin-bottom: 0.5rem; }
-
-	/* --- MOBILE SPECIFIC FIXES --- */
+	/* --- MOBILE RESPONSIVENESS --- */
 	@media (max-width: 768px) {
 		main {
-			margin-top: 100px; /* Slightly more space for stacked mobile headers */
-			padding: 2rem 1rem;
+			padding: 1rem;
+			margin-top: 100px; /* Extra room for mobile header */
 		}
 
-		.projects-hero h1 {
-			font-size: 1.8rem;
-		}
+		.projects-hero h1 { font-size: 1.8rem; }
 
 		.projects-grid {
-			/* On small phones, use a single column */
-			grid-template-columns: 1fr;
+			/* Force single column on mobile to prevent overflow */
+			grid-template-columns: 1fr; 
 			gap: 1.5rem;
 		}
 
 		.project-content {
-			/* Justified text can look "gappy" on very narrow screens */
-			text-align: left;
+			text-align: left; /* Justified text looks bad on narrow screens */
 		}
 
 		dialog {
-			width: 95%;
-			padding: 0;
-		}
-
-		.modal-header h2 {
-			font-size: 1.1rem;
+			width: 95% !important;
 		}
 	}
+
+	/* Existing Project Content Styles */
+	.tag { background: #0056b3; color: white; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold; }
+	.project-content { padding: 1.5rem; text-align: justify; line-height: 1.6; }
+	.tech-label { font-family: monospace; color: #0056b3; font-weight: bold; margin-bottom: 0.5rem; }
 
 	/* Modal Styles */
 	dialog {
@@ -268,12 +264,8 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		box-shadow: 0 25px 50px rgba(0,0,0,0.25);
 		border-top: 8px solid #0056b3;
 	}
-	dialog::backdrop {
-		background: rgba(0, 0, 0, 0.5);
-		backdrop-filter: blur(4px);
-	}
+	dialog::backdrop { background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); }
 	.modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: #f8f9fa; border-bottom: 1px solid #eee; }
 	.modal-body { padding: 2rem; text-align: justify; line-height: 1.7; }
 	.close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; color: #999; }
-	.btn-project { display: block; background: #0056b3; color: white; text-align: center; text-decoration: none; padding: 0.8rem; border-radius: 6px; font-weight: bold; margin-top: 1.5rem; }
 </style>
