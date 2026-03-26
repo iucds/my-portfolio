@@ -1,195 +1,114 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { Image } from 'astro:assets';
-import heroImg from '../assets/deenpic.png';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				width: 960px;
+			}
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2rem;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			ul li {
+				width: calc(50% - 1rem);
+			}
+			ul li * {
+				text-decoration: none;
+				transition: 0.2s ease;
+			}
+			ul li:first-child {
+				width: 100%;
+				margin-bottom: 1rem;
+				text-align: center;
+			}
+			ul li:first-child img {
+				width: 100%;
+			}
+			ul li:first-child .title {
+				font-size: 2.369rem;
+			}
+			ul li img {
+				margin-bottom: 0.5rem;
+				border-radius: 12px;
+			}
+			ul li a {
+				display: block;
+			}
+			.title {
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1;
+			}
+			.date {
+				margin: 0;
+				color: rgb(var(--gray));
+			}
+			ul li a:hover h4,
+			ul li a:hover .date {
+				color: rgb(var(--accent));
+			}
+			ul a:hover img {
+				box-shadow: var(--box-shadow);
+			}
+			@media (max-width: 720px) {
+				ul {
+					gap: 0.5em;
+				}
+				ul li {
+					width: 100%;
+					text-align: center;
+				}
+				ul li:first-child {
+					margin-bottom: 0;
+				}
+				ul li:first-child .title {
+					font-size: 1.563em;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<section class="hero-section">
-				<div class="top-row animate-in">
-					<div class="hero-image-circle">
-						<Image src={heroImg} alt="Kitti-Ampon Chia De En" loading="eager" />
-					</div>
-					<div class="intro-box">
-						<h5>Hey there! <br> I'm De En and you've just stumbled across my portfolio! Let me show you around.</h5>
-					</div>
-				</div>
-
-				<div class="bottom-content">
-					<div class="description-text">
-						<div class="animate-in delay-1">
-							<p>
-								I am an Engineering Science student from Ngee Ann Polytechnic. I aspire to be an engineer that leverages on empathy and human-centered design to develop products that change the way we live for the better!
-							</p>
-							<a href="/academic&experience" class="btn">My Academic Journey and Experience!</a>
-						</div>
-						
-						<div class="animate-in delay-2">
-							<p>
-								I have immersed myself in research and development (R&D) projects since Secondary School and am still going at it! My projects cover a wide range of domains from agriculture to experimental physics. 
-							</p>
-							<a href="/projects" class="btn">Projects that I have worked on!</a>
-						</div>
-						
-						<div class="animate-in delay-3">
-							<p>
-								Beyond my passion for STEM, I am also motivated to serve my community both locally and overseas. I have experience organising volunteering initiatives as well as leading an overseas service learning trip! <br> I believe that as a leader, I am responsible for serving the people who I am leading which makes leadership another form of service to me.
-							</p>
-							<a href="/sl" class="btn">My Service and Leadership Experience!</a>
-						</div>
-						
-						<div class="animate-in delay-4">
-							<p>
-								Feel free to click this button if you are interested in browsing my Achievements and Certificates!
-							</p>
-							<a href="/achievements" class="btn">My Achievements and Certificates!</a>
-						</div>
-					</div>
-				</div>
+			<section>
+				<ul>
+					{
+						posts.map((post) => (
+							<li>
+								<a href={`/blog/${post.id}/`}>
+									{post.data.heroImage && (
+										<Image width={720} height={360} src={post.data.heroImage} alt="" />
+									)}
+									<h4 class="title">{post.data.title}</h4>
+									<p class="date">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+								</a>
+							</li>
+						))
+					}
+				</ul>
 			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
-
-<style>
-/* --- 1. GLOBAL WRAPPER FIX --- */
-main {
-	/* Pushes content down exactly enough to clear the fixed header */
-	margin-top: 80px; 
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-/* --- 2. ANIMATION LOGIC --- */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-in {
-  opacity: 0;
-  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-/* Staggered Delays for a Professional Flow */
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.6s; }
-.delay-4 { animation-delay: 0.8s; }
-
-/* --- 3. HERO & CONTENT STYLES --- */
-.hero-section {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 2rem;
-	/* Removed top padding to prevent the weird gap */
-	padding: 0 2rem 4rem 2rem; 
-	max-width: 1000px;
-	margin: 0 auto;
-}
-
-.top-row {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  width: 100%;
-}
-
-.hero-image-circle {
-  width: 100%;
-  max-width: 450px; /* Adjusted for better mobile/desktop balance */
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 4px solid #0056b3;
-  flex-shrink: 0;
-}
-
-.hero-image-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.intro-box {
-	text-align: left;
-}
-
-.intro-box h5 {
-	font-size: 1.5rem;
-	line-height: 1.4;
-	color: #333;
-}
-
-.description-text {
-  background: white;
-  padding: 2.5rem;
-  margin-top: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  border-top: 4px solid #0056b3; 
-  text-align: center;
-  line-height: 1.8;
-}
-
-.btn {
-  display: block;
-  width: 100%;
-  max-width: 450px;
-  margin: 1.5rem auto 2.5rem auto;
-  text-align: center;
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
-  padding: 1rem;
-  background: #0056b3;
-  border-radius: 6px;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.btn:hover {
-  background: #004494;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,86,179,0.3);
-}
-
-/* --- 4. MOBILE RESPONSIVENESS --- */
-@media (max-width: 768px) {
-	.top-row {
-		flex-direction: column;
-		text-align: center;
-		gap: 1.5rem;
-	}
-	.intro-box {
-		text-align: center;
-	}
-	.hero-image-circle {
-		max-width: 280px;
-	}
-	main {
-		margin-top: 100px; /* Slightly more space for the stacked mobile header */
-	}
-}
-</style>
