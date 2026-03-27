@@ -1,357 +1,253 @@
 ---
+import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+// --- 1. CARD THUMBNAILS ---
+import yepV0 from '../assets/yep-vietnam-0.jpg';
+import yepT0 from '../assets/yep-thailand-0.jpg';
+import esac0 from '../assets/esac-0.jpg';
+import wos0 from '../assets/wos-0.jpg';
+import wh0 from '../assets/wh-0.jpg';
+import kk0 from '../assets/kk-0.jpg';
+import irr0 from '../assets/irr-0.jpg';
+
+// --- 2. CAROUSEL IMAGES (For Vietnam, Thailand, WOS, and Kampung Kakis) ---
+import v1 from '../assets/yep-v1.jpg'; import v2 from '../assets/yep-v2.jpg'; import v3 from '../assets/yep-v3.jpg';
+import t1 from '../assets/yep-t1.jpg'; import t2 from '../assets/yep-t2.jpg'; import t3 from '../assets/yep-t3.jpg';
+import w1 from '../assets/wos-1.jpg'; import w2 from '../assets/wos-2.jpg'; import w3 from '../assets/wos-3.jpg';
+import kk1 from '../assets/kk-1.jpg'; import kk2 from '../assets/kk-2.jpg'; import kk3 from '../assets/kk-3.jpg';
+
+// --- 3. SINGLE MODAL IMAGES (For ESAC, WH, and IRR) ---
+import e_full from '../assets/esac-1.jpg';
+import wh_full from '../assets/wh-1.jpg';
+import irr_full from '../assets/irr-1.jpg';
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Projects | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<BaseHead title={`Service & Leadership | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<section class="projects-hero">
-				<h1>My Service and Leadership Experience!</h1>
-				<p>Click on a card to find out more about each experience.</p>
+			<section class="hero-section">
+				<h1>Service & Leadership</h1>
+				<p>Technical logic meets social impact. A documentation of my community contributions and leadership roles.</p>
 			</section>
 
 			<div class="projects-grid">
-				<article class="project-card" onclick="document.getElementById('modal-pico').showModal()">
-					<div class="project-image" style="background-color: #e0f2fe;">
-						<span class="tag">Embedded Systems</span>
+				<article class="project-card" onclick="document.getElementById('modal-vietnam').showModal()">
+					<div class="project-image" style={`background-image: url(${yepV0.src});`}>
+						<span class="tag">International Service</span>
+						<p class="tech-label">Ben Tre • Community Building</p>
 					</div>
 					<div class="project-content">
-						<h3>RP2350 High-Speed DAQ</h3>
-						<p class="tech-label">C++ • PIO Assembly • UDP</p>
-						<p class="short-desc">High-speed data acquisition using the Raspberry Pi Pico 2.</p>
+						<h3>YEP: Ben Tre, Vietnam</h3>
+						<p class="short-desc">Service-learning expedition focused on infrastructure development and education.</p>
 					</div>
 				</article>
 
-				<article class="project-card" onclick="document.getElementById('modal-eic').showModal()">
-					<div class="project-image" style="background-color: #f0fdf4;">
-						<span class="tag">R&D</span>
+				<article class="project-card" onclick="document.getElementById('modal-thailand').showModal()">
+					<div class="project-image" style={`background-image: url(${yepT0.src});`}>
+						<span class="tag">Leadership</span>
+						<p class="tech-label">Udon Thani • Student Leader</p>
 					</div>
 					<div class="project-content">
-						<h3>Indoor Farming System</h3>
-						<p class="tech-label">Arduino • Sensor Integration</p>
-						<p class="short-desc">1st Runner Up in EIC 2020. Automated urban agriculture solution from **SST**.</p>
+						<h3>YEP Student Leader: Thailand</h3>
+						<p class="short-desc">Led a student team in community development and cultural exchange in Udon Thani.</p>
 					</div>
 				</article>
 
-				<article class="project-card" onclick="document.getElementById('modal-pico').showModal()">
-					<div class="project-image" style="background-color: #e0f2fe;">
-						<span class="tag">Embedded Systems</span>
+				<article class="project-card" onclick="document.getElementById('modal-esac').showModal()">
+					<div class="project-image" style={`background-image: url(${esac0.src});`}>
+						<span class="tag">Academic Club</span>
+						<p class="tech-label">ESAC • Logistics Head</p>
 					</div>
 					<div class="project-content">
-						<h3>RP2350 High-Speed DAQ</h3>
-						<p class="tech-label">C++ • PIO Assembly • UDP</p>
-						<p class="short-desc">High-speed data acquisition using the Raspberry Pi Pico 2.</p>
+						<h3>ESAC Logistics Head</h3>
+						<p class="short-desc">Managing operations and resource allocation for the Engineering Science Academic Club.</p>
 					</div>
 				</article>
 
-				<article class="project-card" onclick="document.getElementById('modal-eic').showModal()">
-					<div class="project-image" style="background-color: #f0fdf4;">
-						<span class="tag">R&D</span>
+				<article class="project-card" onclick="document.getElementById('modal-wos').showModal()">
+					<div class="project-image" style={`background-image: url(${wos0.src});`}>
+						<span class="tag">Chairperson</span>
+						<p class="tech-label">WOS • Leadership</p>
 					</div>
 					<div class="project-content">
-						<h3>Indoor Farming System</h3>
-						<p class="tech-label">Arduino • Sensor Integration</p>
-						<p class="short-desc">1st Runner Up in EIC 2020. Automated urban agriculture solution from **SST**.</p>
+						<h3>Chairperson: Wings of Solidarity</h3>
+						<p class="short-desc">Spearheading advocacy and support initiatives for marginalized communities.</p>
 					</div>
 				</article>
 
-				<article class="project-card" onclick="document.getElementById('modal-pico').showModal()">
-					<div class="project-image" style="background-color: #e0f2fe;">
-						<span class="tag">Embedded Systems</span>
+				<article class="project-card" onclick="document.getElementById('modal-wh').showModal()">
+					<div class="project-image" style={`background-image: url(${wh0.src});`}>
+						<span class="tag">Volunteering</span>
+						<p class="tech-label">Willing Hearts • Food Security</p>
 					</div>
 					<div class="project-content">
-						<h3>RP2350 High-Speed DAQ</h3>
-						<p class="tech-label">C++ • PIO Assembly • UDP</p>
-						<p class="short-desc">High-speed data acquisition using the Raspberry Pi Pico 2.</p>
+						<h3>Volunteer: Willing Hearts</h3>
+						<p class="short-desc">Supporting daily soup kitchen operations to provide meals for those in need.</p>
 					</div>
 				</article>
 
-				<article class="project-card" onclick="document.getElementById('modal-eic').showModal()">
-					<div class="project-image" style="background-color: #f0fdf4;">
-						<span class="tag">R&D</span>
+				<article class="project-card" onclick="document.getElementById('modal-kk').showModal()">
+					<div class="project-image" style={`background-image: url(${kk0.src});`}>
+						<span class="tag">Volunteering</span>
+						<p class="tech-label">Kampung Kakis • Senior Outreach</p>
 					</div>
 					<div class="project-content">
-						<h3>Indoor Farming System</h3>
-						<p class="tech-label">Arduino • Sensor Integration</p>
-						<p class="short-desc">1st Runner Up in EIC 2020. Automated urban agriculture solution from **SST**.</p>
+						<h3>Volunteer: Kampung Kakis</h3>
+						<p class="short-desc">Connecting neighbors to support vulnerable seniors through localized care.</p>
 					</div>
 				</article>
 
-				<article class="project-card" onclick="document.getElementById('modal-pico').showModal()">
-					<div class="project-image" style="background-color: #e0f2fe;">
-						<span class="tag">Embedded Systems</span>
+				<article class="project-card" onclick="document.getElementById('modal-irr').showModal()">
+					<div class="project-image" style={`background-image: url(${irr0.src});`}>
+						<span class="tag">Volunteering</span>
+						<p class="tech-label">IRR • Migrant Workers</p>
 					</div>
 					<div class="project-content">
-						<h3>RP2350 High-Speed DAQ</h3>
-						<p class="tech-label">C++ • PIO Assembly • UDP</p>
-						<p class="short-desc">High-speed data acquisition using the Raspberry Pi Pico 2.</p>
-					</div>
-				</article>
-
-				<article class="project-card" onclick="document.getElementById('modal-eic').showModal()">
-					<div class="project-image" style="background-color: #f0fdf4;">
-						<span class="tag">R&D</span>
-					</div>
-					<div class="project-content">
-						<h3>Indoor Farming System</h3>
-						<p class="tech-label">Arduino • Sensor Integration</p>
-						<p class="short-desc">1st Runner Up in EIC 2020. Automated urban agriculture solution from **SST**.</p>
-					</div>
-				</article>
-
-				<article class="project-card" onclick="document.getElementById('modal-pico').showModal()">
-					<div class="project-image" style="background-color: #e0f2fe;">
-						<span class="tag">Embedded Systems</span>
-					</div>
-					<div class="project-content">
-						<h3>RP2350 High-Speed DAQ</h3>
-						<p class="tech-label">C++ • PIO Assembly • UDP</p>
-						<p class="short-desc">High-speed data acquisition using the Raspberry Pi Pico 2.</p>
-					</div>
-				</article>
-
-				<article class="project-card" onclick="document.getElementById('modal-eic').showModal()">
-					<div class="project-image" style="background-color: #f0fdf4;">
-						<span class="tag">R&D</span>
-					</div>
-					<div class="project-content">
-						<h3>Indoor Farming System</h3>
-						<p class="tech-label">Arduino • Sensor Integration</p>
-						<p class="short-desc">1st Runner Up in EIC 2020. Automated urban agriculture solution from **SST**.</p>
+						<h3>Volunteer: ItsRainingRaincoats</h3>
+						<p class="short-desc">Supporting migrant worker welfare through integration and distribution programs.</p>
 					</div>
 				</article>
 			</div>
 
-			<dialog id="modal-pico" class="project-modal">
-				<div class="modal-header">
-					<h2>RP2350 High-Speed DAQ</h2>
-					<button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
-				</div>
+			<dialog id="modal-vietnam" class="project-modal">
+				<div class="modal-header"><h2>YEP Ben Tre, Vietnam</h2><button class="close-btn">&times;</button></div>
 				<div class="modal-body">
-					<p><strong>Overview:</strong> Leveraging the dual-core **RP2350** and its **PIO** blocks to achieve nanosecond-precision timing for physics data capture.</p>
-					<ul>
-						<li>Interfaced with 8-channel 12-bit ADCs.</li>
-						<li>Implemented UDP streaming for real-time monitoring.</li>
-					</ul>
-					<a href="https://github.com" class="btn-project">View GitHub Source</a>
+					<div class="carousel-container"><div class="carousel-track">
+						<div class="carousel-slide"><Image src={v1} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={v2} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={v3} alt="" width={800} height={450} /></div>
+					</div></div>
+					<p>Technical and community reflections...</p>
 				</div>
 			</dialog>
 
-			<dialog id="modal-eic" class="project-modal">
-				<div class="modal-header">
-					<h2>Indoor Farming System</h2>
-					<button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
-				</div>
+			<dialog id="modal-thailand" class="project-modal">
+				<div class="modal-header"><h2>YEP Udon Thani, Thailand</h2><button class="close-btn">&times;</button></div>
 				<div class="modal-body">
-					<p><strong>Achievement:</strong> Awarded **1st Runner Up** at EIC 2020. This project used **human-centered design** to simplify sustainable urban farming.</p>
-					<ul>
-						<li>Automated nutrient and water dosing.</li>
-						<li>Integrated pH, moisture, and light sensors.</li>
-					</ul>
+					<div class="carousel-container"><div class="carousel-track">
+						<div class="carousel-slide"><Image src={t1} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={t2} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={t3} alt="" width={800} height={450} /></div>
+					</div></div>
+					<p>Leadership reflections...</p>
 				</div>
 			</dialog>
+
+			<dialog id="modal-esac" class="project-modal">
+				<div class="modal-header"><h2>ESAC Logistics Head</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-body">
+					<div class="single-image-container">
+						<Image src={e_full} alt="" width={800} height={450} />
+					</div>
+					<p>Managing operations and logistics for the academic club...</p>
+				</div>
+			</dialog>
+
+			<dialog id="modal-wos" class="project-modal">
+				<div class="modal-header"><h2>Wings of Solidarity</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-body">
+					<div class="carousel-container"><div class="carousel-track">
+						<div class="carousel-slide"><Image src={w1} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={w2} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={w3} alt="" width={800} height={450} /></div>
+					</div></div>
+					<p>Advocacy and leadership work...</p>
+				</div>
+			</dialog>
+
+			<dialog id="modal-wh" class="project-modal">
+				<div class="modal-header"><h2>Volunteer: Willing Hearts</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-body">
+					<div class="single-image-container">
+						<Image src={wh_full} alt="" width={800} height={450} />
+					</div>
+					<p>Support in daily soup kitchen operations...</p>
+				</div>
+			</dialog>
+
+			<dialog id="modal-kk" class="project-modal">
+				<div class="modal-header"><h2>Volunteer: Kampung Kakis</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-body">
+					<div class="carousel-container"><div class="carousel-track">
+						<div class="carousel-slide"><Image src={kk1} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={kk2} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={kk3} alt="" width={800} height={450} /></div>
+					</div></div>
+					<p>Connecting neighbors for senior support...</p>
+				</div>
+			</dialog>
+
+			<dialog id="modal-irr" class="project-modal">
+				<div class="modal-header"><h2>Volunteer: ItsRainingRaincoats</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-body">
+					<div class="single-image-container">
+						<Image src={irr_full} alt="" width={800} height={450} />
+					</div>
+					<p>Welfare distributions for migrant workers...</p>
+				</div>
+			</dialog>
+
 		</main>
 		<Footer />
 
 		<script>
-			// 1. Modal Backdrop Click-to-Close
-			const dialogs = document.querySelectorAll('dialog');
-			dialogs.forEach(dialog => {
-				dialog.addEventListener('click', (e) => {
-					if (e.target === dialog) {
-						(dialog as HTMLDialogElement).close();
-					}
-				});
+			document.querySelectorAll('dialog').forEach(dialog => {
+				dialog.querySelector('.close-btn')?.addEventListener('click', () => (dialog as HTMLDialogElement).close());
+				dialog.addEventListener('click', (e) => { if (e.target === dialog) (dialog as HTMLDialogElement).close(); });
 			});
-
-			// 2. Fade-Up Intersection Observer
-			const observerOptions = {
-				threshold: 0.1,
-				rootMargin: '0px 0px -50px 0px'
-			};
 
 			const observer = new IntersectionObserver((entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('reveal');
-						observer.unobserve(entry.target);
-					}
-				});
-			}, observerOptions);
-
-			document.querySelectorAll('.project-card').forEach(card => {
-				observer.observe(card);
-			});
+				entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('reveal'); });
+			}, { threshold: 0.1 });
+			document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
 		</script>
 	</body>
 </html>
 
 <style>
-	/* --- 2. THE GRID (STRICT 2-COLUMN) --- */
-	.projects-grid {
-		display: grid;
-		/* DESKTOP: Exactly two equal columns */
-		grid-template-columns: 1fr 1fr; 
-		gap: 2.5rem;
-		width: 100%;
-	}
+	/* --- HEADER SYNC & LAYOUT --- */
+	main { margin-top: 120px; max-width: 1100px; margin-left: auto; margin-right: auto; padding: 2rem; width: 100%; }
+	.hero-section { text-align: center; margin-bottom: 4rem; }
+	.hero-section h1 { color: #0056b3; font-size: 2.8rem; font-weight: 800; letter-spacing: -0.02em; }
 
-	.projects-hero { 
-		text-align: center; 
-		margin-bottom: 4rem; 
+	/* --- GRID & CARDS --- */
+	.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; width: 100%; }
+	.project-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 5px solid #0056b3; cursor: pointer; display: flex; flex-direction: column; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease; }
+	.project-card.reveal { opacity: 1; transform: translateY(0); }
+	.project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15); }
+	
+	.project-image { 
+		height: 200px; padding: 1.2rem; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 0.5rem; 
+		background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #f8f9fa; position: relative; 
 	}
 	
-	.projects-hero h1 { 
-		color: #0056b3; 
-		font-size: 2.5rem; 
-	}
+	.tag { background: #0056b3; color: white; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold; z-index: 2; }
+	.tech-label { font-family: monospace; color: #0056b3; background: rgba(255, 255, 255, 0.9); padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: bold; font-size: 0.8rem; margin: 0; z-index: 2; }
+	.project-content { padding: 1.5rem; flex-grow: 1; }
 
-	/* --- 3. PROJECT CARD STYLES --- */
-	.project-card {
-		background: white;
-		border-radius: 12px;
-		overflow: hidden;
-		box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-		border-top: 5px solid #0056b3;
-		cursor: pointer;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-
-		/* Fade-up Logic */
-		opacity: 0;
-		transform: translateY(40px);
-		transition: 
-			opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-			transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-			box-shadow 0.3s ease;
-	}
-
-	/* Triggers via Intersection Observer in your JS */
-	.project-card.reveal {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
-	.project-card.reveal:hover {
-		transform: translateY(-8px);
-		box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15);
-	}
-
-	.project-image { 
-		height: 180px; /* Slightly taller for the wider 2-column layout */
-		padding: 1rem; 
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.tag { 
-		background: #0056b3; 
-		color: white; 
-		padding: 0.3rem 0.8rem; 
-		border-radius: 4px; 
-		font-size: 0.75rem; 
-		font-weight: bold; 
-	}
-
-	.project-content { 
-		padding: 1.5rem; 
-		text-align: justify; 
-		line-height: 1.6; 
-		flex-grow: 1;
-	}
-
-	.tech-label { 
-		font-family: monospace; 
-		color: #0056b3; 
-		font-weight: bold; 
-		margin-bottom: 0.5rem; 
-		font-size: 0.9rem;
-	}
-
-	/* --- 4. MOBILE RESPONSIVENESS (STRICT 1-COLUMN) --- */
-	@media (max-width: 850px) {
-		main {
-			margin-top: 100px; /* Extra clearance for mobile headers */
-			padding: 1.5rem 1rem;
-		}
-
-		.projects-grid {
-			/* MOBILE: Switch to a single vertical stack */
-			grid-template-columns: 1fr; 
-			gap: 2rem;
-		}
-
-		.projects-hero h1 {
-			font-size: 1.8rem;
-		}
-
-		.project-content {
-			text-align: left; /* Justified text looks better left-aligned on small screens */
-		}
-
-		dialog {
-			width: 95% !important;
-		}
-	}
-
-	/* --- 5. MODAL / DIALOG STYLES --- */
-	dialog {
-		border: none;
-		border-radius: 16px;
-		padding: 0;
-		width: 90%;
-		max-width: 650px;
-		box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-		border-top: 8px solid #0056b3;
-	}
-
-	dialog::backdrop {
-		background: rgba(0, 0, 0, 0.5);
-		backdrop-filter: blur(4px);
-	}
-
-	.modal-header { 
-		display: flex; 
-		justify-content: space-between; 
-		align-items: center; 
-		padding: 1.5rem 2rem; 
-		background: #f8f9fa; 
-		border-bottom: 1px solid #eee; 
-	}
-
-	.modal-body { 
-		padding: 2rem; 
-		text-align: justify; 
-		line-height: 1.7; 
-	}
-
-	.close-btn { 
-		background: none; 
-		border: none; 
-		font-size: 2rem; 
-		cursor: pointer; 
-		color: #999; 
-	}
-
-	.btn-project { 
-		display: block; 
-		background: #0056b3; 
-		color: white; 
-		text-align: center; 
-		text-decoration: none; 
-		padding: 0.8rem; 
-		border-radius: 6px; 
-		font-weight: bold; 
-		margin-top: 1.5rem; 
-	}
+	/* --- CAROUSEL & SINGLE IMAGE MODALS --- */
+	.carousel-container, .single-image-container { width: 100%; margin-bottom: 2rem; background: #f0f0f0; border-radius: 12px; overflow: hidden; }
+	.carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 1rem; }
+	.carousel-track::-webkit-scrollbar { display: none; }
+	.carousel-slide { flex: 0 0 100%; scroll-snap-align: start; }
+	
+	/* Shared image styling for carousel and single shots */
+	.carousel-slide img, .single-image-container img { width: 100%; height: 400px; object-fit: contain; }
+	
+	dialog { border: none; border-radius: 16px; padding: 0; width: 90%; max-width: 800px; border-top: 8px solid #0056b3; }
+	dialog::backdrop { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); }
+	.modal-header { display: flex; justify-content: space-between; padding: 1.5rem 2rem; background: #f8f9fa; }
+	.modal-body { padding: 2rem; line-height: 1.7; }
+	.close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; color: #999; }
+	
+	@media (max-width: 850px) { main { margin-top: 100px; } .projects-grid { grid-template-columns: 1fr; } .carousel-slide { flex: 0 0 90%; } }
 </style>
