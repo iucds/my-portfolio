@@ -53,4 +53,82 @@ import heroImg from '../assets/deenpic.png';
 </html>
 
 <style>
+	main {
+		width: calc(100% - 2em);
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 3em 1em;
+		color: rgb(var(--gray-dark));
+	}
+
+	h1 {
+		font-size: 2.25rem;
+		margin-bottom: 1rem;
+		color: var(--black);
+		border-bottom: 2px solid #eee;
+		padding-bottom: 0.5rem;
+	}
+
+	/* Summary Stats Row */
+	.stats-row {
+		display: flex;
+		gap: 2rem;
+		margin-bottom: 2.5rem;
+		background: #f8f9fa;
+		padding: 1.5rem;
+		border-radius: 8px;
+		border-left: 4px solid var(--accent);
+	}
+
+	.stat-item b {
+		color: var(--black);
+		font-size: 1.1rem;
+	}
+
+	/* List Styling */
+	ul#bullet-list {
+		list-style: none;
+		padding: 0;
+		margin-bottom: 4rem;
+	}
+
+	ul#bullet-list li {
+		position: relative;
+		padding: 0.75rem 0 0.75rem 1.5rem;
+		border-bottom: 1px solid #f0f0f0;
+		transition: transform 0.2s ease;
+	}
+
+	ul#bullet-list li:hover {
+		transform: translateX(5px);
+		color: var(--black);
+	}
+
+	/* Custom bullet using the accent color */
+	ul#bullet-list li::before {
+		content: "▹";
+		position: absolute;
+		left: 0;
+		color: var(--accent);
+		font-weight: bold;
+	}
+
+	/* Highlighting "Most Outstanding" awards */
+	ul#bullet-list li:has(strong), 
+	ul#bullet-list li:contains("Most Outstanding"),
+	ul#bullet-list li:contains("First Place") {
+		font-weight: 600;
+		background: linear-gradient(90deg, #f0f7ff 0%, transparent 100%);
+	}
+
+	@media (max-width: 720px) {
+		.stats-row {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+		
+		h1 {
+			font-size: 1.75rem;
+		}
+	}
 </style>
