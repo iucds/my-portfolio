@@ -1,8 +1,24 @@
 ---
+import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+// 1. IMPORT ASSETS (This allows Astro to optimize/WebP your images)
+import fyp0 from '../assets/fyp-0.jpg';
+import asiot0 from '../assets/asiot-0.jpg';
+import cvdl0 from '../assets/cvdl-0.jpg';
+import ifs0 from '../assets/ifs-0.jpg';
+import bustech0 from '../assets/bustech-0.jpg';
+import nrc0 from '../assets/nrc-0.jpg';
+import ysap0 from '../assets/ysap-0.jpg';
+import balloonsat0 from '../assets/balloonsat-0.jpg';
+
+// Carousel Images (Example for FYP - Repeat for others)
+import fyp1 from '../assets/fyp-1.jpg';
+import fyp2 from '../assets/fyp-2.jpg';
+import fyp3 from '../assets/fyp-3.jpg';
 ---
 
 <!doctype html>
@@ -14,352 +30,89 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		<Header />
 		<main>
 			<section class="projects-hero">
-				<h1>STEM Projects that I have worked on!</h1>
-				<p>Click on a card to see technical details and project outcomes.</p>
+				<h1>STEM Projects & Research</h1>
+				<p>Technical documentation of my work in Embedded Systems, Robotics, and Physics.</p>
 			</section>
 
 			<div class="projects-grid">
 				<article class="project-card" onclick="document.getElementById('modal-fyp').showModal()">
-					<div class="project-image" style="background-image: url('/assets/fyp-0.jpg'); background-size: cover; background-position: center;">
+					<div class="project-image" style={`background-image: url(${fyp0.src});`}>
 						<span class="tag">Experimental Physics</span>
+						<p class="tech-label">C++ • PIO Assembly • UDP</p>
 					</div>
 					<div class="project-content">
-						<h3>Data Acquisition Device for Ion Beam Material Analysis</h3>
-						<p class="tech-label">C++ • PIO Assembly • UDP</p>
-						<p class="short-desc">Digitalisation of Data Acquisition Devices for Ion Beam Analysis using Raspberry Pi Pico 2</p>
+						<h3>Ion Beam Data Acquisition</h3>
+						<p class="short-desc">Digitalisation of DAQ devices for Ion Beam Analysis using Raspberry Pi Pico 2 (RP2350).</p>
 					</div>
 				</article>
 
 				<article class="project-card" onclick="document.getElementById('modal-asiot').showModal()">
-					<div class="project-image" style="background-image: url('/assets/asiot-0.jpg'); background-size: cover; background-position: center;">
+					<div class="project-image" style={`background-image: url(${asiot0.src});`}>
 						<span class="tag">Robotics</span>
+						<p class="tech-label">ROS • Python • Navigation</p>
 					</div>
 					<div class="project-content">
 						<h3>Autonomous Navigating Robot</h3>
-						<p class="tech-label">ROS • Robot Intelligence • Future Proofing</p>
-						<p class="short-desc">ROS1 to ROS2 migration of an existing autonomous robot for future proofing</p>
+						<p class="short-desc">ROS1 to ROS2 migration of an existing autonomous robot for future proofing.</p>
 					</div>
 				</article>
 
 				<article class="project-card" onclick="document.getElementById('modal-cvdl').showModal()">
-					<div class="project-image" style="background-color: #e0f2fe;">
+					<div class="project-image" style={`background-image: url(${cvdl0.src});`}>
 						<span class="tag">Machine Intelligence</span>
+						<p class="tech-label">Computer Vision • Deep Learning</p>
 					</div>
 					<div class="project-content">
 						<h3>Fall Detection via Pose Estimation</h3>
-						<p class="tech-label">Computer Vision • Deep Learning • Python</p>
-						<p class="short-desc">Development of a Computer Vision model that utilises pose estimation to detect if a person has fallen.</p>
+						<p class="short-desc">Utilising pose estimation models to detect falls for elderly care monitoring.</p>
 					</div>
 				</article>
 
 				<article class="project-card" onclick="document.getElementById('modal-ifs').showModal()">
-					<div class="project-image" style="background-image: url('/assets/ifs-0.jpg'); background-size: cover; background-position: center;">
-						<span class="tag">Agriculture and Food Security</span>
+					<div class="project-image" style={`background-image: url(${ifs0.src});`}>
+						<span class="tag">Agriculture</span>
+						<p class="tech-label">Arduino • IoT • Sensors</p>
 					</div>
 					<div class="project-content">
 						<h3>Indoor Farming System</h3>
-						<p class="tech-label">Arduino • Sensor Integration</p>
-						<p class="short-desc">1st Runner Up in EIC 2020. Automated urban agriculture solution from **SST**.</p>
+						<p class="short-desc">1st Runner Up in EIC 2020. Automated urban agriculture solution from SST.</p>
 					</div>
 				</article>
-
-				<article class="project-card" onclick="document.getElementById('modal-bustech').showModal()">
-					<div class="project-image" style="background-image: url('/assets/bustech-0.jpg'); background-size: cover; background-position: center;">
-						<span class="tag">Transport</span>
-					</div>
-					<div class="project-content">
-						<h3>Hotswappable Bus Charging Port</h3>
-						<p class="tech-label">C++ • PIO Assembly • UDP</p>
-						<p class="short-desc">High-speed data acquisition using the Raspberry Pi Pico 2.</p>
-					</div>
-				</article>
-
-				<article class="project-card" onclick="document.getElementById('modal-nrc').showModal()">
-					<div class="project-image" style="background-image: url('/assets/nrc-0.jpg'); background-size: cover; background-position: center;">
-						<span class="tag">Robotics</span>
-					</div>
-					<div class="project-content">
-						<h3>NRC</h3>
-						<p class="tech-label">Arduino • Sensor Integration</p>
-						<p class="short-desc">1st Runner Up in EIC 2020. Automated urban agriculture solution from **SST**.</p>
-					</div>
-				</article>
-
-				<article class="project-card" onclick="document.getElementById('modal-ysap').showModal()">
-					<div class="project-image" style="background-image: url('/assets/ysap-0.jpg'); background-size: cover; background-position: center;">
-						<span class="tag">Health</span>
-					</div>
-					<div class="project-content">
-						<h3>RP2350 High-Speed DAQ</h3>
-						<p class="tech-label">C++ • PIO Assembly • UDP</p>
-						<p class="short-desc">High-speed data acquisition using the Raspberry Pi Pico 2.</p>
-					</div>
-				</article>
-
-				<article class="project-card" onclick="document.getElementById('modal-balloonsat').showModal()">
-					<div class="project-image" style="background-image: url('/assets/balloonsat-0.jpg'); background-size: cover; background-position: center;">
-						<span class="tag">Space Tech</span>
-					</div>
-					<div class="project-content">
-						<h3>Indoor Farming System</h3>
-						<p class="tech-label">Arduino • Sensor Integration</p>
-						<p class="short-desc">1st Runner Up in EIC 2020. Automated urban agriculture solution from **SST**.</p>
-					</div>
-				</article>
-			</div>
+                
+                </div>
 
 			<dialog id="modal-fyp" class="project-modal">
-			    <div class="modal-header">
-			        <h2>Data Acquisition for Ion Beam Analysis</h2>
-			        <button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
-			    </div>
-			    <div class="modal-body">
-			        
-			        <div class="carousel-wrapper">
-			            <div class="carousel-track">
-			                <div class="carousel-slide">
-			                    <img src="/assets/fyp-1.jpg" alt="RP2350 Prototype" />
-			                    <span class="caption">Prototype using Raspberry Pi Pico 2</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/fyp-2.jpg" alt="Circuit Schematic" />
-			                    <span class="caption">Custom High-Speed ADC Interface Schematic</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/fyp-3.jpg" alt="Data Visualization" />
-			                    <span class="caption">Real-time UDP Stream Visualization</span>
-			                </div>
-			            </div>
-			            <div class="carousel-hint">Swipe for more technical views →</div>
-			        </div>
-			        <p><strong>Technical Overview:</strong> Leveraging the **RP2350** and its **PIO** blocks to achieve nanosecond-precision timing...</p>
-			        <ul>
-			            <li>Interfaced with 8-channel 12-bit ADCs.</li>
-			            <li>Implemented UDP streaming for real-time monitoring.</li>
-			        </ul>
-			    </div>
+				<div class="modal-header">
+					<h2>Ion Beam DAQ Digitalisation</h2>
+					<button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="carousel-container">
+						<div class="carousel-track">
+							<div class="carousel-slide">
+								<Image src={fyp1} alt="Pico 2 Prototype" width={800} height={450} format="webp" />
+								<span class="caption">Prototype using Raspberry Pi Pico 2</span>
+							</div>
+							<div class="carousel-slide">
+								<Image src={fyp2} alt="Schematic" width={800} height={450} format="webp" />
+								<span class="caption">Custom High-Speed ADC Interface</span>
+							</div>
+							<div class="carousel-slide">
+								<Image src={fyp3} alt="Data Plot" width={800} height={450} format="webp" />
+								<span class="caption">Real-time UDP Stream Visualization</span>
+							</div>
+						</div>
+						<div class="scroll-hint">Swipe for more →</div>
+					</div>
+					<p><strong>Technical Overview:</strong> Leveraging the RP2350 and its PIO blocks to achieve nanosecond-precision timing...</p>
+					<ul>
+						<li>Interfaced with 8-channel 12-bit ADCs.</li>
+						<li>Implemented UDP streaming for real-time monitoring.</li>
+					</ul>
+				</div>
 			</dialog>
-
-			<dialog id="modal-ifs" class="project-modal">
-			    <div class="modal-header">
-			        <h2>Data Acquisition for Ion Beam Analysis</h2>
-			        <button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
-			    </div>
-			    <div class="modal-body">
-			        
-			        <div class="carousel-wrapper">
-			            <div class="carousel-track">
-			                <div class="carousel-slide">
-			                    <img src="/assets/ifs-1.jpg" alt="RP2350 Prototype" />
-			                    <span class="caption">Prototype using Raspberry Pi Pico 2</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/ifs-2.jpg" alt="Circuit Schematic" />
-			                    <span class="caption">Custom High-Speed ADC Interface Schematic</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/ifs-3.jpg" alt="Data Visualization" />
-			                    <span class="caption">Real-time UDP Stream Visualization</span>
-			                </div>
-			            </div>
-			            <div class="carousel-hint">Swipe for more technical views →</div>
-			        </div>
-			        <p><strong>Technical Overview:</strong> Leveraging the **RP2350** and its **PIO** blocks to achieve nanosecond-precision timing...</p>
-			        <ul>
-			            <li>Interfaced with 8-channel 12-bit ADCs.</li>
-			            <li>Implemented UDP streaming for real-time monitoring.</li>
-			        </ul>
-			    </div>
-			</dialog>
-
-			<dialog id="modal-cvdl" class="project-modal">
-			    <div class="modal-header">
-			        <h2>Data Acquisition for Ion Beam Analysis</h2>
-			        <button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
-			    </div>
-			    <div class="modal-body">
-			        
-			        <div class="carousel-wrapper">
-			            <div class="carousel-track">
-			                <div class="carousel-slide">
-			                    <img src="/assets/cvdl-1.jpg" alt="RP2350 Prototype" />
-			                    <span class="caption">Prototype using Raspberry Pi Pico 2</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/cvdl-2.jpg" alt="Circuit Schematic" />
-			                    <span class="caption">Custom High-Speed ADC Interface Schematic</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/cvdl-3.jpg" alt="Data Visualization" />
-			                    <span class="caption">Real-time UDP Stream Visualization</span>
-			                </div>
-			            </div>
-			            <div class="carousel-hint">Swipe for more technical views →</div>
-			        </div>
-			        <p><strong>Technical Overview:</strong> Leveraging the **RP2350** and its **PIO** blocks to achieve nanosecond-precision timing...</p>
-			        <ul>
-			            <li>Interfaced with 8-channel 12-bit ADCs.</li>
-			            <li>Implemented UDP streaming for real-time monitoring.</li>
-			        </ul>
-			    </div>
-			</dialog>
-
-			<dialog id="modal-asiot" class="project-modal">
-			    <div class="modal-header">
-			        <h2>Data Acquisition for Ion Beam Analysis</h2>
-			        <button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
-			    </div>
-			    <div class="modal-body">
-			        
-			        <div class="carousel-wrapper">
-			            <div class="carousel-track">
-			                <div class="carousel-slide">
-			                    <img src="/assets/asiot-1.jpg" alt="RP2350 Prototype" />
-			                    <span class="caption">Prototype using Raspberry Pi Pico 2</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/asiot-2.jpg" alt="Circuit Schematic" />
-			                    <span class="caption">Custom High-Speed ADC Interface Schematic</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/asiot-3.jpg" alt="Data Visualization" />
-			                    <span class="caption">Real-time UDP Stream Visualization</span>
-			                </div>
-			            </div>
-			            <div class="carousel-hint">Swipe for more technical views →</div>
-			        </div>
-			        <p><strong>Technical Overview:</strong> Leveraging the **RP2350** and its **PIO** blocks to achieve nanosecond-precision timing...</p>
-			        <ul>
-			            <li>Interfaced with 8-channel 12-bit ADCs.</li>
-			            <li>Implemented UDP streaming for real-time monitoring.</li>
-			        </ul>
-			    </div>
-			</dialog>
-			<dialog id="modal-nrc" class="project-modal">
-			    <div class="modal-header">
-			        <h2>Data Acquisition for Ion Beam Analysis</h2>
-			        <button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
-			    </div>
-			    <div class="modal-body">
-			        
-			        <div class="carousel-wrapper">
-			            <div class="carousel-track">
-			                <div class="carousel-slide">
-			                    <img src="/assets/nrc-1.jpg" alt="RP2350 Prototype" />
-			                    <span class="caption">Prototype using Raspberry Pi Pico 2</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/nrc-2.jpg" alt="Circuit Schematic" />
-			                    <span class="caption">Custom High-Speed ADC Interface Schematic</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/nrc-3.jpg" alt="Data Visualization" />
-			                    <span class="caption">Real-time UDP Stream Visualization</span>
-			                </div>
-			            </div>
-			            <div class="carousel-hint">Swipe for more technical views →</div>
-			        </div>
-			        <p><strong>Technical Overview:</strong> Leveraging the **RP2350** and its **PIO** blocks to achieve nanosecond-precision timing...</p>
-			        <ul>
-			            <li>Interfaced with 8-channel 12-bit ADCs.</li>
-			            <li>Implemented UDP streaming for real-time monitoring.</li>
-			        </ul>
-			    </div>
-			</dialog>
-			<dialog id="modal-bustech" class="project-modal">
-			    <div class="modal-header">
-			        <h2>Data Acquisition for Ion Beam Analysis</h2>
-			        <button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
-			    </div>
-			    <div class="modal-body">
-			        
-			        <div class="carousel-wrapper">
-			            <div class="carousel-track">
-			                <div class="carousel-slide">
-			                    <img src="/assets/bustech-1.jpg" alt="RP2350 Prototype" />
-			                    <span class="caption">Prototype using Raspberry Pi Pico 2</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/bustech-2.jpg" alt="Circuit Schematic" />
-			                    <span class="caption">Custom High-Speed ADC Interface Schematic</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/asiot-3.jpg" alt="Data Visualization" />
-			                    <span class="caption">Real-time UDP Stream Visualization</span>
-			                </div>
-			            </div>
-			            <div class="carousel-hint">Swipe for more technical views →</div>
-			        </div>
-			        <p><strong>Technical Overview:</strong> Leveraging the **RP2350** and its **PIO** blocks to achieve nanosecond-precision timing...</p>
-			        <ul>
-			            <li>Interfaced with 8-channel 12-bit ADCs.</li>
-			            <li>Implemented UDP streaming for real-time monitoring.</li>
-			        </ul>
-			    </div>
-			</dialog>
-			<dialog id="modal-ysap" class="project-modal">
-			    <div class="modal-header">
-			        <h2>Data Acquisition for Ion Beam Analysis</h2>
-			        <button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
-			    </div>
-			    <div class="modal-body">
-			        
-			        <div class="carousel-wrapper">
-			            <div class="carousel-track">
-			                <div class="carousel-slide">
-			                    <img src="/assets/ysap-1.jpg" alt="RP2350 Prototype" />
-			                    <span class="caption">Prototype using Raspberry Pi Pico 2</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/ysap-2.jpg" alt="Circuit Schematic" />
-			                    <span class="caption">Custom High-Speed ADC Interface Schematic</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/ysap-3.jpg" alt="Data Visualization" />
-			                    <span class="caption">Real-time UDP Stream Visualization</span>
-			                </div>
-			            </div>
-			            <div class="carousel-hint">Swipe for more technical views →</div>
-			        </div>
-			        <p><strong>Technical Overview:</strong> Leveraging the **RP2350** and its **PIO** blocks to achieve nanosecond-precision timing...</p>
-			        <ul>
-			            <li>Interfaced with 8-channel 12-bit ADCs.</li>
-			            <li>Implemented UDP streaming for real-time monitoring.</li>
-			        </ul>
-			    </div>
-			</dialog>
-			<dialog id="modal-balloonsat" class="project-modal">
-			    <div class="modal-header">
-			        <h2>Data Acquisition for Ion Beam Analysis</h2>
-			        <button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
-			    </div>
-			    <div class="modal-body">
-			        
-			        <div class="carousel-wrapper">
-			            <div class="carousel-track">
-			                <div class="carousel-slide">
-			                    <img src="/assets/balloonsat-1.jpg" alt="RP2350 Prototype" />
-			                    <span class="caption">Prototype using Raspberry Pi Pico 2</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/balloonsat-2.jpg" alt="Circuit Schematic" />
-			                    <span class="caption">Custom High-Speed ADC Interface Schematic</span>
-			                </div>
-			                <div class="carousel-slide">
-			                    <img src="/assets/balloonsat-3.jpg" alt="Data Visualization" />
-			                    <span class="caption">Real-time UDP Stream Visualization</span>
-			                </div>
-			            </div>
-			            <div class="carousel-hint">Swipe for more technical views →</div>
-			        </div>
-			        <p><strong>Technical Overview:</strong> Leveraging the **RP2350** and its **PIO** blocks to achieve nanosecond-precision timing...</p>
-			        <ul>
-			            <li>Interfaced with 8-channel 12-bit ADCs.</li>
-			            <li>Implemented UDP streaming for real-time monitoring.</li>
-			        </ul>
-			    </div>
-			</dialog>
-		</main>
+            
+            </main>
 		<Footer />
 
 		<script>
@@ -373,12 +126,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 				});
 			});
 
-			// 2. Fade-Up Intersection Observer
-			const observerOptions = {
-				threshold: 0.1,
-				rootMargin: '0px 0px -50px 0px'
-			};
-
+			// 2. Fade-Up Animation
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
@@ -386,7 +134,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 						observer.unobserve(entry.target);
 					}
 				});
-			}, observerOptions);
+			}, { threshold: 0.1 });
 
 			document.querySelectorAll('.project-card').forEach(card => {
 				observer.observe(card);
@@ -396,25 +144,34 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 </html>
 
 <style>
+	/* --- LAYOUT & GRID --- */
+	main {
+		margin-top: 80px;
+		max-width: 1200px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 2rem;
+		width: 100%;
+	}
+
 	.projects-grid {
 		display: grid;
-		/* DESKTOP: Exactly two equal columns */
-		grid-template-columns: 1fr 1fr; 
+		grid-template-columns: 1fr 1fr; /* STRICT 2-COLUMN DESKTOP */
 		gap: 2.5rem;
 		width: 100%;
 	}
 
-	.projects-hero { 
-		text-align: center; 
-		margin-bottom: 4rem; 
-	}
-	
-	.projects-hero h1 { 
-		color: #0056b3; 
-		font-size: 2.5rem; 
+	.projects-hero {
+		text-align: center;
+		margin-bottom: 4rem;
 	}
 
-	/* --- 3. PROJECT CARD STYLES --- */
+	.projects-hero h1 {
+		color: #0056b3;
+		font-size: 2.5rem;
+	}
+
+	/* --- CARDS --- */
 	.project-card {
 		background: white;
 		border-radius: 12px;
@@ -422,195 +179,142 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 		border-top: 5px solid #0056b3;
 		cursor: pointer;
-		width: 100%;
 		display: flex;
 		flex-direction: column;
-
-		/* Fade-up Logic */
-		opacity: 0;
+		opacity: 0; /* Hidden for animation */
 		transform: translateY(40px);
-		transition: 
-			opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-			transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-			box-shadow 0.3s ease;
+		transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease;
 	}
 
-	/* Triggers via Intersection Observer in your JS */
 	.project-card.reveal {
 		opacity: 1;
 		transform: translateY(0);
 	}
 
-	.project-card.reveal:hover {
+	.project-card:hover {
 		transform: translateY(-8px);
 		box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15);
 	}
 
-	.project-image { 
-		height: 180px; /* Slightly taller for the wider 2-column layout */
-		padding: 1rem; 
+	.project-image {
+		height: 200px;
+		padding: 1.2rem;
 		display: flex;
-		align-items: center;
-		justify-content: center;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: 0.5rem;
+		background-size: cover;
+		background-position: center;
+		position: relative;
 	}
 
-	.tag { 
-		background: #0056b3; 
-		color: white; 
-		padding: 0.3rem 0.8rem; 
-		border-radius: 4px; 
-		font-size: 0.75rem; 
-		font-weight: bold; 
+    /* Dark overlay for readability over images */
+    .project-image::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent);
+        z-index: 1;
+    }
+
+	.tag {
+		background: #0056b3;
+		color: white;
+		padding: 0.3rem 0.8rem;
+		border-radius: 4px;
+		font-size: 0.75rem;
+		font-weight: bold;
+		z-index: 2;
 	}
 
-	.project-content { 
-		padding: 1.5rem; 
-		text-align: justify; 
-		line-height: 1.6; 
+	.tech-label {
+		font-family: monospace;
+		color: #0056b3;
+		background: rgba(255, 255, 255, 0.85);
+		padding: 0.2rem 0.5rem;
+		border-radius: 4px;
+		font-weight: bold;
+		font-size: 0.8rem;
+		margin: 0;
+		z-index: 2;
+	}
+
+	.project-content {
+		padding: 1.5rem;
 		flex-grow: 1;
 	}
 
-	.tech-label { 
-		font-family: monospace; 
-		color: #0056b3; 
-		font-weight: bold; 
-		margin-bottom: 0.5rem; 
-		font-size: 0.9rem;
+	/* --- CAROUSEL --- */
+	.carousel-container {
+		width: 100%;
+		margin-bottom: 2rem;
+		position: relative;
 	}
 
-	/* --- 4. MOBILE RESPONSIVENESS (STRICT 1-COLUMN) --- */
-	@media (max-width: 850px) {
-		main {
-			margin-top: 100px; /* Extra clearance for mobile headers */
-			padding: 1.5rem 1rem;
-		}
-
-		.projects-grid {
-			/* MOBILE: Switch to a single vertical stack */
-			grid-template-columns: 1fr; 
-			gap: 2rem;
-		}
-
-		.projects-hero h1 {
-			font-size: 1.8rem;
-		}
-
-		.project-content {
-			text-align: left; /* Justified text looks better left-aligned on small screens */
-		}
-
-		dialog {
-			width: 95% !important;
-		}
+	.carousel-track {
+		display: flex;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scroll-behavior: smooth;
+		gap: 1.5rem;
+		padding-bottom: 1rem;
 	}
 
-	/* --- 5. MODAL / DIALOG STYLES --- */
+	.carousel-track::-webkit-scrollbar { display: none; }
+
+	.carousel-slide {
+		flex: 0 0 100%;
+		scroll-snap-align: start;
+	}
+
+	.carousel-slide img {
+		width: 100%;
+		height: 350px;
+		object-fit: cover;
+		border-radius: 12px;
+	}
+
+	.caption {
+		display: block;
+		text-align: center;
+		font-size: 0.85rem;
+		color: #666;
+		margin-top: 0.8rem;
+		font-style: italic;
+	}
+
+	/* --- MODALS --- */
 	dialog {
 		border: none;
 		border-radius: 16px;
 		padding: 0;
 		width: 90%;
-		max-width: 650px;
-		box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+		max-width: 750px;
 		border-top: 8px solid #0056b3;
 	}
 
 	dialog::backdrop {
-		background: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0.6);
 		backdrop-filter: blur(4px);
 	}
 
-	.modal-header { 
-		display: flex; 
-		justify-content: space-between; 
-		align-items: center; 
-		padding: 1.5rem 2rem; 
-		background: #f8f9fa; 
-		border-bottom: 1px solid #eee; 
+	.modal-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.5rem 2rem;
+		background: #f8f9fa;
 	}
 
-	.modal-body { 
-		padding: 2rem; 
-		text-align: justify; 
-		line-height: 1.7; 
+	.modal-body { padding: 2rem; line-height: 1.7; }
+
+	.close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; color: #999; }
+
+	/* --- MOBILE --- */
+	@media (max-width: 850px) {
+		.projects-grid { grid-template-columns: 1fr; }
+		.project-image { height: 160px; }
+		.carousel-slide { flex: 0 0 90%; } /* Peek effect for mobile */
 	}
-
-	.close-btn { 
-		background: none; 
-		border: none; 
-		font-size: 2rem; 
-		cursor: pointer; 
-		color: #999; 
-	}
-
-	.btn-project { 
-		display: block; 
-		background: #0056b3; 
-		color: white; 
-		text-align: center; 
-		text-decoration: none; 
-		padding: 0.8rem; 
-		border-radius: 6px; 
-		font-weight: bold; 
-		margin-top: 1.5rem; 
-	}
-    .carousel-container {
-        width: 100%;
-        margin-bottom: 2rem;
-        position: relative;
-    }
-
-    .carousel-track {
-        display: flex;
-        overflow-x: auto; /* Enables horizontal scrolling */
-        scroll-snap-type: x mandatory; /* The "lock" mechanism */
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch; /* Smooth momentum on iPhone */
-        gap: 1.5rem;
-        padding-bottom: 1rem;
-    }
-
-    /* Hide scrollbar for a cleaner look */
-    .carousel-track::-webkit-scrollbar {
-        display: none;
-    }
-
-    .carousel-slide {
-        flex: 0 0 100%; /* Each slide takes 100% of the modal width */
-        scroll-snap-align: start; /* Where the slide "snaps" to */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .carousel-slide img {
-        width: 100%;
-        height: 300px; /* Fixed height for consistency */
-        object-fit: cover;
-        border-radius: 12px;
-        border: 1px solid #eee;
-    }
-
-    .caption {
-        font-size: 0.85rem;
-        color: #666;
-        margin-top: 0.75rem;
-        font-style: italic;
-    }
-
-    .scroll-hint {
-        text-align: right;
-        font-size: 0.7rem;
-        color: #0056b3;
-        font-weight: bold;
-        text-transform: uppercase;
-        margin-top: -0.5rem;
-    }
-
-    /* Tablet/Desktop: Show 1.5 slides to hint there is more content */
-    @media (min-width: 768px) {
-        .carousel-slide {
-            flex: 0 0 85%; 
-        }
-    }
 </style>
