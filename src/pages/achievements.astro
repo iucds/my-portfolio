@@ -1,157 +1,24 @@
-<!DOCTYPE html>
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/deenpic.png';
+---
+
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Achievements | Engineering Science</title>
-    <style>
-        :root {
-            --accent: #2563eb;
-            --dark: #1e293b;
-            --grey: #64748b;
-            --light: #f8fafc;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #fff;
-        }
-
-        header {
-            border-bottom: 2px solid var(--light);
-            padding-bottom: 20px;
-            margin-bottom: 40px;
-        }
-
-        h1 { margin: 0; font-size: 2.5rem; }
-        h2 { 
-            font-size: 1.4rem; 
-            color: var(--accent); 
-            border-left: 4px solid var(--accent);
-            padding-left: 15px;
-            margin-top: 40px;
-            text-transform: uppercase;
-        }
-
-        .category-intro { color: var(--grey); font-style: italic; margin-bottom: 20px; }
-
-        /* Academic Styling */
-        .year-block { margin-bottom: 25px; }
-        .year-title { font-weight: bold; font-size: 1.2rem; display: block; margin-bottom: 5px; }
-        .highlight-rank { color: #0f172a; font-weight: 600; display: block; }
-        .prizes { font-size: 0.95rem; color: #475569; margin-top: 5px; }
-
-        /* List Styling */
-        ul { padding-left: 20px; margin: 10px 0; }
-        li { margin-bottom: 8px; }
-
-        /* Competition Table */
-        .comp-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        .comp-table td { padding: 12px 0; border-bottom: 1px solid #f1f5f9; }
-        .comp-year { width: 80px; color: var(--grey); font-weight: 500; }
-        .comp-rank { font-weight: bold; color: #111; width: 180px; }
-
-        @media (max-width: 600px) {
-            .comp-table tr { display: flex; flex-direction: column; padding: 10px 0; }
-            .comp-rank { width: 100%; }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Achievements</h1>
-        <p>Engineering Science & Applied Mathematics</p>
-    </header>
-
-    <section>
-        <h2>🎓 Academic Excellence</h2>
-        <p class="category-intro">Recognition for top academic performance and module-specific mastery.</p>
-        
-        <div class="year-block">
-            <span class="year-title">2025</span>
-            <span class="highlight-rank">Most Outstanding Performance for Level 2.2 in Engineering Science</span>
-            <div class="prizes">
-                Director’s List • Module Prize for Applied Mathematics 3 • Module Prize for Microcontroller and Interfacing • Module Prize for Physics 2
-            </div>
-        </div>
-
-        <div class="year-block">
-            <span class="year-title">2024</span>
-            <span class="highlight-rank">Most Outstanding Performance for Level 1.2 in Engineering Science</span>
-            <span class="highlight-rank">3rd Most Outstanding Performance for Level 2.1</span>
-            <div class="prizes">
-                Director’s List (Multiple) • Module Prize for Physics 1 • Module Prize for Applied Mathematics 2A • Module Prize for Analogue Electronics
-            </div>
-        </div>
-
-        <div class="year-block">
-            <span class="year-title">2023</span>
-            <span class="highlight-rank">Most Outstanding Performance for Level 1.1 in Engineering Science</span>
-            <div class="prizes">
-                Director’s List • Module Prize for Applied Mathematics 1 • Module Prize for Electrical Engineering Fundamentals • Module Prize for Engineering and Society • Module Prize for Mechanical Engineering Fundamentals
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>🏆 Competitions</h2>
-        <p class="category-intro">Awards and rankings from national and international engineering challenges.</p>
-        <table class="comp-table">
-            <tr>
-                <td class="comp-year">2025</td>
-                <td class="comp-rank">2nd Runner Up</td>
-                <td>BusTech Grand Challenge (Tertiary Category)</td>
-            </tr>
-            <tr>
-                <td class="comp-year">2023</td>
-                <td class="comp-rank">First Place</td>
-                <td>National Robotics Competition (Tertiary Division)</td>
-            </tr>
-            <tr>
-                <td class="comp-year">2023</td>
-                <td class="comp-rank">First Place</td>
-                <td>Global Robotic Games (Mobile Robotics IV)</td>
-            </tr>
-            <tr>
-                <td class="comp-year">2022</td>
-                <td class="comp-rank">Gold Award</td>
-                <td>Young Inventor’s Journal</td>
-            </tr>
-            <tr>
-                <td class="comp-year">2020</td>
-                <td class="comp-rank">1st Runner Up</td>
-                <td>Engineering Innovation Challenge</td>
-            </tr>
-            <tr>
-                <td class="comp-year">2020</td>
-                <td class="comp-rank">Silver Award</td>
-                <td>Indonesia International Applied Science Project Olympiad</td>
-            </tr>
-        </table>
-    </section>
-
-    <section>
-        <h2>🏅 Other Honors</h2>
-        <p class="category-intro">Additional awards in design, mathematics, and science.</p>
-        <ul>
-            <li><strong>SUTD-SST-NP Big D Camp:</strong> Design Excellence Award (2019-2022)</li>
-            <li><strong>Singapore and Asian Schools Math Olympiad:</strong> Gold, Silver, and Bronze Awards</li>
-            <li><strong>Australian Mathematics Competition:</strong> Distinction (2020)</li>
-            <li><strong>SST Book Prizes:</strong> Mathematics & Electronics (2021)</li>
-            <li><strong>Young Inventors Journal:</strong> Gold Award (2022)</li>
-            <li><strong>Engineering Innovation Challenge:</strong> 1st Runner Up (2021)</li>
-        </ul>
-    </section>
-
-</body>
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+		</main>
+		<Footer />
+	</body>
 </html>
+
+<style>
+</style>
