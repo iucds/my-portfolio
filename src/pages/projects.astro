@@ -5,26 +5,14 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
-// --- 1. CARD THUMBNAILS ---
+// 1. IMPORT ASSETS
+// Thumbnail for the main grid
 import fyp0 from '../assets/fyp-0.jpg';
-import asiot0 from '../assets/asiot-0.jpg';
-import cvdl0 from '../assets/cvdl-0.jpg';
-import ifs0 from '../assets/ifs-0.jpg';
-import bustech0 from '../assets/bustech-0.jpg';
-import nrc0 from '../assets/nrc-0.jpg';
-import ysap0 from '../assets/ysap-0.jpg';
-import balloonsat0 from '../assets/balloonsat-0.jpg';
 
-// --- 2. CAROUSEL IMAGES (Organized by Project) ---
-// Note: If some projects only have 2 images, just remove the 3rd <img> tag in the HTML below.
-import fyp1 from '../assets/fyp-1.jpg'; import fyp2 from '../assets/fyp-2.jpg'; import fyp3 from '../assets/fyp-3.jpg';
-import asiot1 from '../assets/asiot-1.jpg'; import asiot2 from '../assets/asiot-2.jpg'; import asiot3 from '../assets/asiot-3.jpg';
-import cvdl1 from '../assets/cvdl-1.jpg'; import cvdl2 from '../assets/cvdl-2.jpg'; import cvdl3 from '../assets/cvdl-3.jpg';
-import ifs1 from '../assets/ifs-1.jpg'; import ifs2 from '../assets/ifs-2.jpg'; import ifs3 from '../assets/ifs-3.jpg';
-import bustech1 from '../assets/bustech-1.jpg'; import bustech2 from '../assets/bustech-2.jpg'; import bustech3 from '../assets/bustech-3.jpg';
-import nrc1 from '../assets/nrc-1.jpg'; import nrc2 from '../assets/nrc-2.jpg'; import nrc3 from '../assets/nrc-3.jpg';
-import ysap1 from '../assets/ysap-1.jpg'; import ysap2 from '../assets/ysap-2.jpg'; import ysap3 from '../assets/ysap-3.jpg';
-import balloonsat1 from '../assets/balloonsat-1.jpg'; import balloonsat2 from '../assets/balloonsat-2.jpg'; import balloonsat3 from '../assets/balloonsat-3.jpg';
+// Detailed images for the modal carousel
+import fyp1 from '../assets/fyp-1.jpg';
+import fyp2 from '../assets/fyp-2.jpg';
+import fyp3 from '../assets/fyp-3.jpg';
 ---
 
 <!doctype html>
@@ -37,186 +25,223 @@ import balloonsat1 from '../assets/balloonsat-1.jpg'; import balloonsat2 from '.
 		<main>
 			<section class="projects-hero">
 				<h1>STEM Projects & Research</h1>
-				<p>Click a card to explore technical details and outcomes.</p>
+				<p>Technical documentation of my work in Embedded Systems and Physics.</p>
 			</section>
 
 			<div class="projects-grid">
 				<article class="project-card" onclick="document.getElementById('modal-fyp').showModal()">
 					<div class="project-image" style={`background-image: url(${fyp0.src});`}>
 						<span class="tag">Experimental Physics</span>
-						<p class="tech-label">C++ • PIO • UDP</p>
+						<p class="tech-label">C++ • PIO Assembly • UDP</p>
 					</div>
-					<div class="project-content"><h3>Ion Beam DAQ</h3><p class="short-desc">Digitalisation of DAQ using RP2350.</p></div>
-				</article>
-/*
-				<article class="project-card" onclick="document.getElementById('modal-asiot').showModal()">
-					<div class="project-image" style={`background-image: url(${asiot0.src});`}>
-						<span class="tag">Robotics</span>
-						<p class="tech-label">ROS • Python</p>
+					<div class="project-content">
+						<h3>Ion Beam Data Acquisition</h3>
+						<p class="short-desc">Digitalisation of DAQ devices for Ion Beam Analysis using Raspberry Pi Pico 2 (RP2350).</p>
 					</div>
-					<div class="project-content"><h3>Autonomous Robot</h3><p class="short-desc">ROS1 to ROS2 migration for future-proofing.</p></div>
 				</article>
 
-				<article class="project-card" onclick="document.getElementById('modal-cvdl').showModal()">
-					<div class="project-image" style={`background-image: url(${cvdl0.src});`}>
-						<span class="tag">AI</span>
-						<p class="tech-label">CV • Deep Learning</p>
+				<article class="project-card placeholder">
+					<div class="project-image" style="background-color: #f8f9fa;">
+						<span class="tag">Coming Soon</span>
 					</div>
-					<div class="project-content"><h3>Fall Detection</h3><p class="short-desc">Pose estimation for elderly safety.</p></div>
-				</article>
-
-				<article class="project-card" onclick="document.getElementById('modal-ifs').showModal()">
-					<div class="project-image" style={`background-image: url(${ifs0.src});`}>
-						<span class="tag">Agriculture</span>
-						<p class="tech-label">Arduino • IoT</p>
+					<div class="project-content">
+						<h3>Future Project</h3>
+						<p class="short-desc">Additional technical research currently under documentation.</p>
 					</div>
-					<div class="project-content"><h3>Indoor Farming</h3><p class="short-desc">Automated urban agriculture solution.</p></div>
 				</article>
-
-				<article class="project-card" onclick="document.getElementById('modal-bustech').showModal()">
-					<div class="project-image" style={`background-image: url(${bustech0.src});`}>
-						<span class="tag">Transport</span>
-						<p class="tech-label">C++ • Hardware</p>
-					</div>
-					<div class="project-content"><h3>Bus Charging Port</h3><p class="short-desc">Hotswappable charging interface design.</p></div>
-				</article>
-
-				<article class="project-card" onclick="document.getElementById('modal-nrc').showModal()">
-					<div class="project-image" style={`background-image: url(${nrc0.src});`}>
-						<span class="tag">Robotics</span>
-						<p class="tech-label">Arduino • Sensors</p>
-					</div>
-					<div class="project-content"><h3>NRC Competition</h3><p class="short-desc">National Robotics Competition entry.</p></div>
-				</article>
-
-				<article class="project-card" onclick="document.getElementById('modal-ysap').showModal()">
-					<div class="project-image" style={`background-image: url(${ysap0.src});`}>
-						<span class="tag">Health</span>
-						<p class="tech-label">Electronics • Bio</p>
-					</div>
-					<div class="project-content"><h3>Health Monitoring</h3><p class="short-desc">Wearable data acquisition system.</p></div>
-				</article>
-
-				<article class="project-card" onclick="document.getElementById('modal-balloonsat').showModal()">
-					<div class="project-image" style={`background-image: url(${balloonsat0.src});`}>
-						<span class="tag">Space Tech</span>
-						<p class="tech-label">Telemetry • Sensors</p>
-					</div>
-					<div class="project-content"><h3>BalloonSat</h3><p class="short-desc">High-altitude weather sensing platform.</p></div>
-				</article>
-*/
 			</div>
 
 			<dialog id="modal-fyp" class="project-modal">
-				<div class="modal-header"><h2>Ion Beam Analysis DAQ</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={fyp1} alt="FYP 1" width={800} height={450} /><span class="caption">Setup</span></div>
-						<div class="carousel-slide"><Image src={fyp2} alt="FYP 2" width={800} height={450} /><span class="caption">Circuit</span></div>
-						<div class="carousel-slide"><Image src={fyp3} alt="FYP 3" width={800} height={450} /><span class="caption">Data</span></div>
-					</div></div>
-					<p>Technical details here...</p>
+				<div class="modal-header">
+					<h2>Ion Beam DAQ Digitalisation</h2>
+					<button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
 				</div>
-			</dialog>
-/*
-			<dialog id="modal-asiot" class="project-modal">
-				<div class="modal-header"><h2>Autonomous Navigation</h2><button class="close-btn">&times;</button></div>
 				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={asiot1} alt="ASIOT 1" width={800} height={450} /><span class="caption">Robot Chassis</span></div>
-						<div class="carousel-slide"><Image src={asiot2} alt="ASIOT 2" width={800} height={450} /><span class="caption">ROS Graph</span></div>
-						<div class="carousel-slide"><Image src={asiot3} alt="ASIOT 3" width={800} height={450} /><span class="caption">Mapping</span></div>
-					</div></div>
-					<p>Technical details here...</p>
-				</div>
-			</dialog>
+					<div class="carousel-container">
+						<div class="carousel-track">
+							<div class="carousel-slide">
+								<Image src={fyp1} alt="Pico 2 Prototype" width={800} height={450} format="webp" />
+								<span class="caption">Prototype using Raspberry Pi Pico 2</span>
+							</div>
+							<div class="carousel-slide">
+								<Image src={fyp2} alt="Schematic" width={800} height={450} format="webp" />
+								<span class="caption">Custom High-Speed ADC Interface</span>
+							</div>
+							<div class="carousel-slide">
+								<Image src={fyp3} alt="Data Plot" width={800} height={450} format="webp" />
+								<span class="caption">Real-time UDP Stream Visualization</span>
+							</div>
+						</div>
+						<div class="scroll-hint">Swipe for more technical views →</div>
+					</div>
 
-			<dialog id="modal-cvdl" class="project-modal">
-				<div class="modal-header"><h2>Fall Detection AI</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={cvdl1} alt="CVDL 1" width={800} height={450} /><span class="caption">Model Architecture</span></div>
-						<div class="carousel-slide"><Image src={cvdl2} alt="CVDL 2" width={800} height={450} /><span class="caption">Detection Result</span></div>
-					</div></div>
-					<p>Technical details here...</p>
+					<div class="project-description">
+						<p><strong>Technical Overview:</strong> This project focuses on the modernization of Ion Beam Analysis (IBA) instrumentation. By leveraging the **RP2350** and its **Programmable I/O (PIO)** blocks, I achieved nanosecond-precision timing for pulse detection.</p>
+						
+						<h3>Key Engineering Features:</h3>
+						<ul>
+							<li><strong>High-Speed Acquisition:</strong> Interfaced with 8-channel 12-bit ADCs at maximum sample rates.</li>
+							<li><strong>Data Pipeline:</strong> Implemented a low-latency UDP streaming protocol for real-time monitoring on a desktop client.</li>
+							<li><strong>Hardware:</strong> Designed a custom PCB interface for signal conditioning between the Ortec pre-amps and the microcontroller.</li>
+						</ul>
+						
+						<a href="https://github.com/your-repo" target="_blank" class="btn-project">View GitHub Repository</a>
+					</div>
 				</div>
 			</dialog>
-
-			<dialog id="modal-ifs" class="project-modal">
-				<div class="modal-header"><h2>Indoor Farming System</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={ifs1} alt="IFS 1" width={800} height={450} /><span class="caption">Sensors</span></div>
-						<div class="carousel-slide"><Image src={ifs2} alt="IFS 2" width={800} height={450} /><span class="caption">System View</span></div>
-					</div></div>
-					<p>Technical details here...</p>
-				</div>
-			</dialog>
-
-			<dialog id="modal-bustech" class="project-modal">
-				<div class="modal-header"><h2>Bus Charging Port</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={bustech1} alt="Bus 1" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={bustech2} alt="Bus 2" width={800} height={450} /></div>
-					</div></div>
-					<p>Technical details here...</p>
-				</div>
-			</dialog>
-
-			<dialog id="modal-nrc" class="project-modal">
-				<div class="modal-header"><h2>NRC Robotics</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={nrc1} alt="NRC 1" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={nrc2} alt="NRC 2" width={800} height={450} /></div>
-					</div></div>
-					<p>Technical details here...</p>
-				</div>
-			</dialog>
-
-			<dialog id="modal-ysap" class="project-modal">
-				<div class="modal-header"><h2>Health DAQ</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={ysap1} alt="YSAP 1" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={ysap2} alt="YSAP 2" width={800} height={450} /></div>
-					</div></div>
-					<p>Technical details here...</p>
-				</div>
-			</dialog>
-
-			<dialog id="modal-balloonsat" class="project-modal">
-				<div class="modal-header"><h2>BalloonSat Telemetry</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={balloonsat1} alt="Sat 1" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={balloonsat2} alt="Sat 2" width={800} height={450} /></div>
-					</div></div>
-					<p>Technical details here...</p>
-				</div>
-			</dialog>
-*/
-
 		</main>
 		<Footer />
 
 		<script>
-			// Close modal logic
-			document.querySelectorAll('dialog').forEach(dialog => {
-				dialog.querySelector('.close-btn')?.addEventListener('click', () => (dialog as HTMLDialogElement).close());
-				dialog.addEventListener('click', (e) => { if (e.target === dialog) (dialog as HTMLDialogElement).close(); });
+			// Modal Backdrop Click-to-Close
+			const dialogs = document.querySelectorAll('dialog');
+			dialogs.forEach(dialog => {
+				dialog.addEventListener('click', (e) => {
+					if (e.target === dialog) {
+						(dialog as HTMLDialogElement).close();
+					}
+				});
 			});
 
-			// Reveal logic
+			// Fade-Up Animation
 			const observer = new IntersectionObserver((entries) => {
-				entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('reveal'); });
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('reveal');
+						observer.unobserve(entry.target);
+					}
+				});
 			}, { threshold: 0.1 });
-			document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
+
+			document.querySelectorAll('.project-card').forEach(card => {
+				observer.observe(card);
+			});
 		</script>
 	</body>
 </html>
 
 <style>
-	/* Use the styles provided in the previous turn for grid, card, carousel, and modal layout */
+	/* --- LAYOUT --- */
+	main {
+		margin-top: 80px;
+		max-width: 1100px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 2rem;
+		width: 100%;
+	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr; /* 2-Column Desktop */
+		gap: 2.5rem;
+		width: 100%;
+	}
+
+	.projects-hero {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+
+	/* --- CARDS --- */
+	.project-card {
+		background: white;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+		border-top: 5px solid #0056b3;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		opacity: 0;
+		transform: translateY(40px);
+		transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease;
+	}
+
+	.project-card.reveal { opacity: 1; transform: translateY(0); }
+	.project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15); }
+
+	.project-image {
+		height: 200px;
+		padding: 1.2rem;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: 0.5rem;
+		background-size: cover;
+		background-position: center;
+		position: relative;
+	}
+
+	.project-image::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
+		z-index: 1;
+	}
+
+	.tag {
+		background: #0056b3;
+		color: white;
+		padding: 0.3rem 0.8rem;
+		border-radius: 4px;
+		font-size: 0.75rem;
+		font-weight: bold;
+		z-index: 2;
+	}
+
+	.tech-label {
+		font-family: monospace;
+		color: #0056b3;
+		background: rgba(255, 255, 255, 0.9);
+		padding: 0.2rem 0.5rem;
+		border-radius: 4px;
+		font-weight: bold;
+		font-size: 0.8rem;
+		margin: 0;
+		z-index: 2;
+	}
+
+	.project-content { padding: 1.5rem; flex-grow: 1; }
+
+	/* --- CAROUSEL --- */
+	.carousel-container { width: 100%; margin-bottom: 2rem; }
+	.carousel-track {
+		display: flex;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scroll-behavior: smooth;
+		gap: 1rem;
+	}
+	.carousel-track::-webkit-scrollbar { display: none; }
+	.carousel-slide { flex: 0 0 100%; scroll-snap-align: start; }
+	.carousel-slide img { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; }
+	.caption { display: block; text-align: center; font-size: 0.85rem; color: #666; margin-top: 0.5rem; }
+	.scroll-hint { text-align: right; font-size: 0.7rem; color: #0056b3; font-weight: bold; margin-top: 0.5rem; }
+
+	/* --- MODALS --- */
+	dialog {
+		border: none;
+		border-radius: 16px;
+		padding: 0;
+		width: 90%;
+		max-width: 750px;
+		border-top: 8px solid #0056b3;
+	}
+	dialog::backdrop { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); }
+	.modal-header { display: flex; justify-content: space-between; padding: 1.5rem 2rem; background: #f8f9fa; }
+	.modal-body { padding: 2rem; line-height: 1.7; }
+	.close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; color: #999; }
+	.btn-project { 
+		display: inline-block; background: #0056b3; color: white; padding: 0.8rem 1.5rem; 
+		border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 1.5rem; 
+	}
+
+	/* --- MOBILE --- */
+	@media (max-width: 850px) {
+		.projects-grid { grid-template-columns: 1fr; }
+		.carousel-slide { flex: 0 0 90%; }
+	}
 </style>
