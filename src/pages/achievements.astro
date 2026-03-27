@@ -1,155 +1,157 @@
 ---
-import Layout from '../layouts/BlogPost.astro'; // Or your main layout
+import Layout from '../layouts/BlogPost.astro';
 
-const achievements = [
-	{ title: "Dean's List 2025", desc: "Recognized for academic excellence in the Faculty of Engineering." },
-	{ title: "Hackathon Winner", desc: "First place out of 50 teams in the National AI Challenge." },
+// Major highlights from your list
+const majorWins = [
+	{ title: "National Robotics Competition (Tertiary)", rank: "1st Place", year: "2023" },
+	{ title: "Global Robotic Games (Mobile Robotics IV)", rank: "1st Place", year: "2023" },
+	{ title: "BusTech Grand Challenge (Tertiary)", rank: "2nd Runner Up", year: "2025" },
+	{ title: "Young Inventor’s Journal", rank: "Gold Award", year: "2022" },
+    { title: "Engineering Innovation Challenge", rank: "1st Runner Up", year: "2020" }
 ];
 
+// Grouping the heavy module prize and performance data
+const academicTimeline = [
+	{ 
+        year: "2025", 
+        highlight: "Most Outstanding Performance for Level 2.2 (Engineering Science)",
+        prizes: ["Applied Mathematics 3", "Microcontroller and Interfacing", "Physics 2"],
+        others: ["Director’s List"]
+    },
+	{ 
+        year: "2024", 
+        highlight: "Most Outstanding Performance for Level 1.2",
+        prizes: ["Physics 1", "Applied Mathematics 2A", "Analogue Electronics"],
+        others: ["3rd Most Outstanding Performance (Level 2.1)", "Director’s List (Multiple)"]
+    },
+	{ 
+        year: "2023", 
+        highlight: "Most Outstanding Performance for Level 1.1",
+        prizes: ["Applied Mathematics 1", "Electrical Engineering Fundamentals", "Engineering and Society", "Mechanical Engineering Fundamentals"],
+        others: ["Director’s List"]
+    }
+];
+
+// Image paths for the carousel at the bottom
 const certificates = [
-	{ src: "/certs/aws-cloud.png", alt: "AWS Certified Cloud Practitioner" },
-	{ src: "/certs/python-pro.png", alt: "Professional Python Developer" },
-	{ src: "/certs/data-science.png", alt: "Data Science Specialization" },
-    { src: "/certs/security.png", alt: "CompTIA Security+" },
+	{ src: "/certs/nrc-gold.jpg", alt: "National Robotics Competition Gold" },
+	{ src: "/certs/grg-first.jpg", alt: "Global Robotic Games 1st Place" },
+	{ src: "/certs/bustech.jpg", alt: "BusTech Grand Challenge" },
+	{ src: "/certs/directors-list.jpg", alt: "Director's List Certificate" },
 ];
 ---
 
-<Layout title="Achievements & Certificates">
+<Layout title="Achievements">
 	<main>
-		<section class="achievements-list">
-			<h1>Key Achievements</h1>
-			<ul>
-				{achievements.map(item => (
-					<li>
-						<strong>{item.title}</strong> — {item.desc}
-					</li>
+		<section class="section">
+			<h2 class="section-title">Competition Highlights</h2>
+			<div class="award-grid">
+				{majorWins.map(win => (
+					<div class="award-card">
+						<span class="year">{win.year}</span>
+						<h3>{win.rank}</h3>
+						<p>{win.title}</p>
+					</div>
 				))}
-			</ul>
+			</div>
 		</section>
 
-		<hr />
+		<section class="section">
+			<h2 class="section-title">Academic Excellence</h2>
+			<div class="timeline">
+				{academicTimeline.map(item => (
+					<div class="timeline-group">
+						<div class="timeline-header">
+							<span class="timeline-year">{item.year}</span>
+							<h3 class="timeline-top-award">{item.highlight}</h3>
+						</div>
+						<div class="timeline-body">
+							<div class="prize-tag-container">
+								{item.prizes.map(prize => <span class="prize-tag">Module Prize: {prize}</span>)}
+							</div>
+							<p class="others-text">Additional: {item.others.join(' • ')}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
 
-		<section class="cert-carousel-container">
-			<h2>Professional Certifications</h2>
-			<div class="carousel-viewport" id="carousel">
-				<div class="carousel-track">
-					{/* Render original certs */}
+		<section class="carousel-section">
+			<h2 class="section-title">Certification Gallery</h2>
+			<div class="carousel-container">
+				<div class="carousel-viewport" id="carousel">
 					{certificates.map(cert => (
 						<div class="carousel-item">
 							<img src={cert.src} alt={cert.alt} />
 							<p>{cert.alt}</p>
 						</div>
 					))}
-					{/* Duplicate first few for seamless "cyclic" feel if needed, 
-					    or let CSS scroll snap handle the feel. */}
 				</div>
-			</div>
-			
-			<div class="controls">
-				<button id="prev">← Prev</button>
-				<button id="next">Next →</button>
+				<button class="nav-btn prev" id="prev">‹</button>
+				<button class="nav-btn next" id="next">›</button>
 			</div>
 		</section>
 	</main>
 </Layout>
 
 <style>
-	main {
-		max-width: 900px;
-		margin: auto;
-		padding: 2rem;
-	}
+	main { max-width: 900px; margin: 0 auto; padding: 4rem 1.5rem; }
+	.section { margin-bottom: 5rem; }
+	.section-title { font-size: 1.75rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; margin-bottom: 2rem; }
 
-	.achievements-list ul {
-		list-style: none;
-		padding: 0;
-	}
+	/* Award Cards */
+	.award-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+	.award-card { background: #fff; border: 1px solid #eee; padding: 1.5rem; border-radius: 12px; transition: 0.3s; }
+	.award-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+	.year { color: var(--accent); font-weight: bold; font-size: 0.9rem; }
+	.award-card h3 { margin: 0.5rem 0; font-size: 1.25rem; color: #111; }
 
-	.achievements-list li {
-		margin-bottom: 1.5rem;
-		padding-left: 1rem;
-		border-left: 3px solid var(--accent);
-	}
+	/* Academic Timeline */
+	.timeline-group { margin-bottom: 3rem; border-left: 2px solid #eee; padding-left: 2rem; position: relative; }
+	.timeline-group::before { content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
+	.timeline-year { font-size: 1.1rem; font-weight: bold; color: var(--accent); }
+	.timeline-top-award { margin: 0.25rem 0 1rem 0; font-size: 1.3rem; }
+	.prize-tag-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+	.prize-tag { background: #f0f4f8; color: #475569; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; border: 1px solid #e2e8f0; }
+	.others-text { font-size: 0.9rem; color: #64748b; font-style: italic; }
 
 	/* Carousel Styles */
-	.cert-carousel-container {
-		text-align: center;
-		overflow: hidden;
-	}
+	.carousel-section { background: #fafafa; padding: 4rem 1.5rem; margin: 0 -1.5rem; text-align: center; }
+	.carousel-container { position: relative; max-width: 1000px; margin: 0 auto; }
+	.carousel-viewport { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 20px; padding: 10px 0; scrollbar-width: none; }
+	.carousel-viewport::-webkit-scrollbar { display: none; }
+	.carousel-item { flex: 0 0 300px; scroll-snap-align: center; }
+	.carousel-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+	.nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.2); cursor: pointer; z-index: 10; font-size: 1.5rem; }
+	.prev { left: -20px; }
+	.next { right: -20px; }
 
-	.carousel-viewport {
-		display: flex;
-		overflow-x: auto;
-		scroll-behavior: smooth;
-		scroll-snap-type: x mandatory;
-		gap: 1.5rem;
-		padding: 1rem 0;
-		scrollbar-width: none; /* Hide scrollbar for Firefox */
-	}
-
-	.carousel-viewport::-webkit-scrollbar {
-		display: none; /* Hide scrollbar for Chrome/Safari */
-	}
-
-	.carousel-track {
-		display: flex;
-		gap: 1.5rem;
-	}
-
-	.carousel-item {
-		flex: 0 0 300px; /* Width of each certificate card */
-		scroll-snap-align: center;
-		background: #f9f9f9;
-		padding: 1rem;
-		border-radius: 8px;
-		box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-	}
-
-	.carousel-item img {
-		width: 100%;
-		height: auto;
-		border-radius: 4px;
-	}
-
-	.controls {
-		margin-top: 1rem;
-		display: flex;
-		justify-content: center;
-		gap: 1rem;
-	}
-
-	button {
-		padding: 0.5rem 1rem;
-		cursor: pointer;
-		background: var(--black);
-		color: white;
-		border: none;
-		border-radius: 4px;
+	@media (max-width: 768px) {
+		.nav-btn { display: none; }
+		.timeline-group { padding-left: 1.5rem; }
 	}
 </style>
 
 <script>
 	const carousel = document.getElementById('carousel');
-	const nextBtn = document.getElementById('next');
-	const prevBtn = document.getElementById('prev');
+	const next = document.getElementById('next');
+	const prev = document.getElementById('prev');
 
-	if (carousel && nextBtn && prevBtn) {
-		const scrollAmount = 320; // Width + Gap
-
-		nextBtn.addEventListener('click', () => {
-			if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
-				carousel.scrollTo({ left: 0, behavior: 'smooth' }); // Cyclic jump to start
+	if (carousel && next && prev) {
+		next.onclick = () => {
+			const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+			if (carousel.scrollLeft >= maxScroll - 5) {
+				carousel.scrollTo({ left: 0, behavior: 'smooth' });
 			} else {
-				carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+				carousel.scrollBy({ left: 320, behavior: 'smooth' });
 			}
-		});
-
-		prevBtn.addEventListener('click', () => {
-			if (carousel.scrollLeft <= 0) {
-				carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' }); // Cyclic jump to end
+		};
+		prev.onclick = () => {
+			if (carousel.scrollLeft <= 5) {
+				carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
 			} else {
-				carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+				carousel.scrollBy({ left: -320, behavior: 'smooth' });
 			}
-		});
+		}
 	}
 </script>
