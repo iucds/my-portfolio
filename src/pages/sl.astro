@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
-// --- 1. CARD THUMBNAILS (Check these filenames in src/assets/) ---
+// --- 1. CARD THUMBNAILS ---
 import yepV0 from '../assets/yep-vietnam-0.jpg';
 import yepT0 from '../assets/yep-thailand-0.jpg';
 import esac0 from '../assets/esac-0.jpg';
@@ -14,11 +14,16 @@ import wh0 from '../assets/wh-0.jpg';
 import kk0 from '../assets/kk-0.jpg';
 import irr0 from '../assets/irr-0.jpg';
 
-// --- 2. MODAL ASSETS (Carousels for V, T, WOS, KK) ---
+// --- 2. CAROUSEL IMAGES (For Vietnam, Thailand, WOS, and Kampung Kakis) ---
 import v1 from '../assets/yep-v1.jpg'; import v2 from '../assets/yep-v2.jpg'; import v3 from '../assets/yep-v3.jpg';
 import t1 from '../assets/yep-t1.jpg'; import t2 from '../assets/yep-t2.jpg'; import t3 from '../assets/yep-t3.jpg';
 import w1 from '../assets/wos-1.jpg'; import w2 from '../assets/wos-2.jpg'; import w3 from '../assets/wos-3.jpg';
 import kk1 from '../assets/kk-1.jpg'; import kk2 from '../assets/kk-2.jpg'; import kk3 from '../assets/kk-3.jpg';
+
+// --- 3. SINGLE MODAL IMAGES (For ESAC, WH, and IRR) ---
+import e_full from '../assets/esac-1.jpg';
+import wh_full from '../assets/wh-1.jpg';
+import irr_full from '../assets/irr-1.jpg';
 ---
 
 <!doctype html>
@@ -40,7 +45,10 @@ import kk1 from '../assets/kk-1.jpg'; import kk2 from '../assets/kk-2.jpg'; impo
 						<span class="tag">International Service</span>
 						<p class="tech-label">Ben Tre • Community Building</p>
 					</div>
-					<div class="project-content"><h3>YEP: Vietnam</h3><p class="short-desc">Service-learning in Ben Tre.</p></div>
+					<div class="project-content">
+						<h3>YEP: Ben Tre, Vietnam</h3>
+						<p class="short-desc">Service-learning expedition focused on infrastructure development and education.</p>
+					</div>
 				</article>
 
 				<article class="project-card" onclick="document.getElementById('modal-thailand').showModal()">
@@ -48,7 +56,10 @@ import kk1 from '../assets/kk-1.jpg'; import kk2 from '../assets/kk-2.jpg'; impo
 						<span class="tag">Leadership</span>
 						<p class="tech-label">Udon Thani • Student Leader</p>
 					</div>
-					<div class="project-content"><h3>YEP: Thailand</h3><p class="short-desc">Leading a team in Udon Thani.</p></div>
+					<div class="project-content">
+						<h3>YEP Student Leader: Thailand</h3>
+						<p class="short-desc">Led a student team in community development and cultural exchange in Udon Thani.</p>
+					</div>
 				</article>
 
 				<article class="project-card" onclick="document.getElementById('modal-esac').showModal()">
@@ -56,7 +67,10 @@ import kk1 from '../assets/kk-1.jpg'; import kk2 from '../assets/kk-2.jpg'; impo
 						<span class="tag">Academic Club</span>
 						<p class="tech-label">ESAC • Logistics Head</p>
 					</div>
-					<div class="project-content"><h3>ESAC Logistics Head</h3><p class="short-desc">Managing academic club operations.</p></div>
+					<div class="project-content">
+						<h3>ESAC Logistics Head</h3>
+						<p class="short-desc">Managing operations and resource allocation for the Engineering Science Academic Club.</p>
+					</div>
 				</article>
 
 				<article class="project-card" onclick="document.getElementById('modal-wos').showModal()">
@@ -64,23 +78,32 @@ import kk1 from '../assets/kk-1.jpg'; import kk2 from '../assets/kk-2.jpg'; impo
 						<span class="tag">Chairperson</span>
 						<p class="tech-label">WOS • Leadership</p>
 					</div>
-					<div class="project-content"><h3>Wings of Solidarity</h3><p class="short-desc">Spearheading advocacy initiatives.</p></div>
+					<div class="project-content">
+						<h3>Chairperson: Wings of Solidarity</h3>
+						<p class="short-desc">Spearheading advocacy and support initiatives for marginalized communities.</p>
+					</div>
 				</article>
 
 				<article class="project-card" onclick="document.getElementById('modal-wh').showModal()">
 					<div class="project-image" style={`background-image: url(${wh0.src});`}>
 						<span class="tag">Volunteering</span>
-						<p class="tech-label">Willing Hearts</p>
+						<p class="tech-label">Willing Hearts • Food Security</p>
 					</div>
-					<div class="project-content"><h3>Volunteer: Willing Hearts</h3><p class="short-desc">Supporting soup kitchen operations.</p></div>
+					<div class="project-content">
+						<h3>Volunteer: Willing Hearts</h3>
+						<p class="short-desc">Supporting daily soup kitchen operations to provide meals for those in need.</p>
+					</div>
 				</article>
 
 				<article class="project-card" onclick="document.getElementById('modal-kk').showModal()">
 					<div class="project-image" style={`background-image: url(${kk0.src});`}>
 						<span class="tag">Volunteering</span>
-						<p class="tech-label">Kampung Kakis</p>
+						<p class="tech-label">Kampung Kakis • Senior Outreach</p>
 					</div>
-					<div class="project-content"><h3>Volunteer: Kampung Kakis</h3><p class="short-desc">Localized senior support outreach.</p></div>
+					<div class="project-content">
+						<h3>Volunteer: Kampung Kakis</h3>
+						<p class="short-desc">Connecting neighbors to support vulnerable seniors through localized care.</p>
+					</div>
 				</article>
 
 				<article class="project-card" onclick="document.getElementById('modal-irr').showModal()">
@@ -88,47 +111,92 @@ import kk1 from '../assets/kk-1.jpg'; import kk2 from '../assets/kk-2.jpg'; impo
 						<span class="tag">Volunteering</span>
 						<p class="tech-label">IRR • Migrant Workers</p>
 					</div>
-					<div class="project-content"><h3>Volunteer: ItsRainingRaincoats</h3><p class="short-desc">Supporting migrant worker welfare.</p></div>
+					<div class="project-content">
+						<h3>Volunteer: ItsRainingRaincoats</h3>
+						<p class="short-desc">Supporting migrant worker welfare through integration and distribution programs.</p>
+					</div>
 				</article>
 			</div>
+
+			<dialog id="modal-vietnam" class="project-modal">
+				<div class="modal-header"><h2>YEP Ben Tre, Vietnam</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-body">
+					<div class="carousel-container"><div class="carousel-track">
+						<div class="carousel-slide"><Image src={v1} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={v2} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={v3} alt="" width={800} height={450} /></div>
+					</div></div>
+					<p>Technical and community reflections...</p>
+				</div>
+			</dialog>
+
+			<dialog id="modal-thailand" class="project-modal">
+				<div class="modal-header"><h2>YEP Udon Thani, Thailand</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-body">
+					<div class="carousel-container"><div class="carousel-track">
+						<div class="carousel-slide"><Image src={t1} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={t2} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={t3} alt="" width={800} height={450} /></div>
+					</div></div>
+					<p>Leadership reflections...</p>
+				</div>
+			</dialog>
 
 			<dialog id="modal-esac" class="project-modal">
 				<div class="modal-header"><h2>ESAC Logistics Head</h2><button class="close-btn">&times;</button></div>
 				<div class="modal-body">
-					<div class="single-image-container"><Image src={esac0} alt="" width={800} height={450} /></div>
-					<p>Operational details for the Engineering Science Academic Club...</p>
+					<div class="single-image-container">
+						<Image src={e_full} alt="" width={800} height={450} />
+					</div>
+					<p>Managing operations and logistics for the academic club...</p>
+				</div>
+			</dialog>
+
+			<dialog id="modal-wos" class="project-modal">
+				<div class="modal-header"><h2>Wings of Solidarity</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-body">
+					<div class="carousel-container"><div class="carousel-track">
+						<div class="carousel-slide"><Image src={w1} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={w2} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={w3} alt="" width={800} height={450} /></div>
+					</div></div>
+					<p>Advocacy and leadership work...</p>
 				</div>
 			</dialog>
 
 			<dialog id="modal-wh" class="project-modal">
-				<div class="modal-header"><h2>Willing Hearts</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-header"><h2>Volunteer: Willing Hearts</h2><button class="close-btn">&times;</button></div>
 				<div class="modal-body">
-					<div class="single-image-container"><Image src={wh0} alt="" width={800} height={450} /></div>
-					<p>Kitchen operations and distribution details...</p>
+					<div class="single-image-container">
+						<Image src={wh_full} alt="" width={800} height={450} />
+					</div>
+					<p>Support in daily soup kitchen operations...</p>
 				</div>
 			</dialog>
 
 			<dialog id="modal-kk" class="project-modal">
-				<div class="modal-header"><h2>Kampung Kakis</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-header"><h2>Volunteer: Kampung Kakis</h2><button class="close-btn">&times;</button></div>
 				<div class="modal-body">
 					<div class="carousel-container"><div class="carousel-track">
 						<div class="carousel-slide"><Image src={kk1} alt="" width={800} height={450} /></div>
 						<div class="carousel-slide"><Image src={kk2} alt="" width={800} height={450} /></div>
 						<div class="carousel-slide"><Image src={kk3} alt="" width={800} height={450} /></div>
 					</div></div>
-					<p>Community outreach reflections...</p>
+					<p>Connecting neighbors for senior support...</p>
 				</div>
 			</dialog>
 
 			<dialog id="modal-irr" class="project-modal">
-				<div class="modal-header"><h2>ItsRainingRaincoats</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-header"><h2>Volunteer: ItsRainingRaincoats</h2><button class="close-btn">&times;</button></div>
 				<div class="modal-body">
-					<div class="single-image-container"><Image src={irr0} alt="" width={800} height={450} /></div>
-					<p>Migrant worker support initiatives...</p>
+					<div class="single-image-container">
+						<Image src={irr_full} alt="" width={800} height={450} />
+					</div>
+					<p>Welfare distributions for migrant workers...</p>
 				</div>
 			</dialog>
-            
-            </main>
+
+		</main>
 		<Footer />
 
 		<script>
@@ -136,6 +204,7 @@ import kk1 from '../assets/kk-1.jpg'; import kk2 from '../assets/kk-2.jpg'; impo
 				dialog.querySelector('.close-btn')?.addEventListener('click', () => (dialog as HTMLDialogElement).close());
 				dialog.addEventListener('click', (e) => { if (e.target === dialog) (dialog as HTMLDialogElement).close(); });
 			});
+
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('reveal'); });
 			}, { threshold: 0.1 });
@@ -145,11 +214,40 @@ import kk1 from '../assets/kk-1.jpg'; import kk2 from '../assets/kk-2.jpg'; impo
 </html>
 
 <style>
-	/* Use the matching header styles from the previous turn */
+	/* --- HEADER SYNC & LAYOUT --- */
 	main { margin-top: 120px; max-width: 1100px; margin-left: auto; margin-right: auto; padding: 2rem; width: 100%; }
 	.hero-section { text-align: center; margin-bottom: 4rem; }
-	.hero-section h1 { color: #0056b3; font-size: 2.8rem; font-weight: 800; }
+	.hero-section h1 { color: #0056b3; font-size: 2.8rem; font-weight: 800; letter-spacing: -0.02em; }
+
+	/* --- GRID & CARDS --- */
 	.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; width: 100%; }
-	.project-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 5px solid #0056b3; cursor: pointer; display: flex; flex-direction: column; opacity: 0; transform: translateY(40px); transition: 0.8s ease; }
+	.project-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 5px solid #0056b3; cursor: pointer; display: flex; flex-direction: column; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease; }
 	.project-card.reveal { opacity: 1; transform: translateY(0); }
-	.project-card:hover { transform: translateY(-8px); box-shadow: 0 1
+	.project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15); }
+	
+	.project-image { 
+		height: 200px; padding: 1.2rem; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 0.5rem; 
+		background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #f8f9fa; position: relative; 
+	}
+	
+	.tag { background: #0056b3; color: white; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold; z-index: 2; }
+	.tech-label { font-family: monospace; color: #0056b3; background: rgba(255, 255, 255, 0.9); padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: bold; font-size: 0.8rem; margin: 0; z-index: 2; }
+	.project-content { padding: 1.5rem; flex-grow: 1; }
+
+	/* --- CAROUSEL & SINGLE IMAGE MODALS --- */
+	.carousel-container, .single-image-container { width: 100%; margin-bottom: 2rem; background: #f0f0f0; border-radius: 12px; overflow: hidden; }
+	.carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 1rem; }
+	.carousel-track::-webkit-scrollbar { display: none; }
+	.carousel-slide { flex: 0 0 100%; scroll-snap-align: start; }
+	
+	/* Shared image styling for carousel and single shots */
+	.carousel-slide img, .single-image-container img { width: 100%; height: 400px; object-fit: contain; }
+	
+	dialog { border: none; border-radius: 16px; padding: 0; width: 90%; max-width: 800px; border-top: 8px solid #0056b3; }
+	dialog::backdrop { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); }
+	.modal-header { display: flex; justify-content: space-between; padding: 1.5rem 2rem; background: #f8f9fa; }
+	.modal-body { padding: 2rem; line-height: 1.7; }
+	.close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; color: #999; }
+	
+	@media (max-width: 850px) { main { margin-top: 100px; } .projects-grid { grid-template-columns: 1fr; } .carousel-slide { flex: 0 0 90%; } }
+</style>
