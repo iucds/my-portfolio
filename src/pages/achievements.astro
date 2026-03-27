@@ -4,56 +4,99 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Achievements">
 	<main>
-		<section class="content">
+		<section class="achievements-container">
 			<h1>Achievements & Awards</h1>
-			
-			<div class="category">
-				<h2>🏆 Major Competition Wins</h2>
-				<ul>
-					<li><strong>2025:</strong> BusTech Grand Challenge (Tertiary Category) — 2nd Runner Up</li>
-					<li><strong>2023:</strong> National Robotics Competition (Tertiary Division) — First Place</li>
-					<li><strong>2023:</strong> Global Robotic Games (Mobile Robotics IV) — First Place</li>
-					<li><strong>2022:</strong> Young Inventor’s Journal — Gold Award</li>
-					<li><strong>2020:</strong> Engineering Innovation Challenge — 1st Runner Up</li>
-					<li><strong>2020:</strong> Indonesia International Applied Science Project Olympiad — Silver Award</li>
-				</ul>
-			</div>
+			<p class="subtitle">A record of academic excellence and competition success in Engineering Science.</p>
 
-			<hr />
-
-			<div class="category">
-				<h2>🎓 Academic Excellence</h2>
+			<div class="award-section">
+				<h2 class="section-title">🏆 Competition Highlights</h2>
 				
-				<h3>2025</h3>
-				<p><strong>Most Outstanding Performance for Level 2.2 in Engineering Science</strong></p>
-				<p>Director’s List | Module Prizes: Applied Mathematics 3, Microcontroller and Interfacing, Physics 2</p>
-
-				<h3>2024</h3>
-				<p><strong>Most Outstanding Performance for Level 1.2 in Engineering Science</strong></p>
-				<p>3rd Most Outstanding Performance for Level 2.1 | Director’s List</p>
-				<p>Module Prizes: Physics 1, Applied Mathematics 2A, Analogue Electronics</p>
-
-				<h3>2023</h3>
-				<p><strong>Most Outstanding Performance for Level 1.1 in Engineering Science</strong></p>
-				<p>Director’s List | Module Prizes: Applied Mathematics 1, Electrical Engineering, Engineering and Society, Mechanical Engineering</p>
-			</div>
-
-			<hr />
-
-			<div class="category">
-				<h2>📜 Certifications</h2>
-				<div class="carousel-container">
-					<div class="carousel" id="cert-carousel">
-						<img src="/certs/nrc.jpg" alt="NRC 2023" />
-						<img src="/certs/grg.jpg" alt="Global Robotic Games" />
-						<img src="/certs/directors.jpg" alt="Director's List" />
-						<img src="/certs/math-olympiad.jpg" alt="SASMO Gold" />
-						</div>
-					<div class="controls">
-						<button id="prev">Back</button>
-						<button id="next">Next</button>
+				<div class="award-entry">
+					<span class="year">2025</span>
+					<div class="details">
+						<h3>BusTech Grand Challenge</h3>
+						<p>Tertiary Category — 2nd Runner Up</p>
 					</div>
 				</div>
+
+				<div class="award-entry">
+					<span class="year">2023</span>
+					<div class="details">
+						<h3>National Robotics Competition</h3>
+						<p>Tertiary Division — First Place</p>
+					</div>
+				</div>
+
+				<div class="award-entry">
+					<span class="year">2023</span>
+					<div class="details">
+						<h3>Global Robotic Games</h3>
+						<p>Mobile Robotics IV — First Place</p>
+					</div>
+				</div>
+
+				<div class="award-entry">
+					<span class="year">2022</span>
+					<div class="details">
+						<h3>Young Inventor’s Journal</h3>
+						<p>Gold Award</p>
+					</div>
+				</div>
+
+				<div class="award-entry">
+					<span class="year">2020</span>
+					<div class="details">
+						<h3>Engineering Innovation Challenge</h3>
+						<p>1st Runner Up</p>
+					</div>
+				</div>
+			</div>
+
+			<hr />
+
+			<div class="award-section">
+				<h2 class="section-title">🎓 Academic Excellence</h2>
+
+				<div class="academic-block">
+					<h3>2025</h3>
+					<ul>
+						<li><strong>Most Outstanding Performance</strong> for Level 2.2 in Engineering Science</li>
+						<li><strong>Director’s List</strong></li>
+						<li><strong>Module Prizes:</strong> Applied Mathematics 3, Microcontroller and Interfacing, Physics 2</li>
+					</ul>
+				</div>
+
+				<div class="academic-block">
+					<h3>2024</h3>
+					<ul>
+						<li><strong>Most Outstanding Performance</strong> for Level 1.2 in Engineering Science</li>
+						<li><strong>3rd Most Outstanding Performance</strong> for Level 2.1 in Engineering Science</li>
+						<li><strong>Director’s List</strong></li>
+						<li><strong>Module Prizes:</strong> Physics 1, Applied Mathematics 2A, Analogue Electronics</li>
+					</ul>
+				</div>
+
+				<div class="academic-block">
+					<h3>2023</h3>
+					<ul>
+						<li><strong>Most Outstanding Performance</strong> for Level 1.1 in Engineering Science</li>
+						<li><strong>Director’s List</strong></li>
+						<li><strong>Module Prizes:</strong> Applied Mathematics 1, Electrical Engineering Fundamentals, Engineering and Society, Mechanical Engineering Fundamentals</li>
+					</ul>
+				</div>
+			</div>
+
+			<hr />
+
+			<div class="award-section">
+				<h2 class="section-title">🏅 Other Notable Awards</h2>
+				<ul class="simple-list">
+					<li>Indonesia International Applied Science Project Olympiad — Silver Award</li>
+					<li>SUTD-SST-NP Big D Camp — Design Excellence Award</li>
+					<li>Singapore and Asian Schools Math Olympiad — Gold & Silver Awards</li>
+					<li>Australian Mathematics Competition — Distinction</li>
+					<li>SST Book Prize — Mathematics & Electronics</li>
+				</ul>
 			</div>
 		</section>
 	</main>
@@ -61,70 +104,50 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
 	main {
-		max-width: 800px;
+		max-width: 850px;
 		margin: 0 auto;
-		padding: 2rem;
-		line-height: 1.6;
+		padding: 4rem 1.5rem;
+		color: #333;
 	}
-	h1 { font-size: 2.5rem; margin-bottom: 2rem; }
-	h2 { color: var(--accent); margin-top: 2rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
-	h3 { margin-top: 1.5rem; margin-bottom: 0.5rem; }
-	p { margin: 0.25rem 0; }
-	ul { padding-left: 1.2rem; }
-	li { margin-bottom: 0.5rem; }
-	hr { margin: 3rem 0; border: 0; border-top: 1px solid #eee; }
 
-	/* Simple Carousel Logic */
-	.carousel-container {
-		margin-top: 1rem;
-		position: relative;
+	h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #111; }
+	.subtitle { color: #666; font-size: 1.1rem; margin-bottom: 3rem; }
+
+	.section-title {
+		font-size: 1.5rem;
+		margin-bottom: 1.5rem;
+		color: var(--accent);
+		text-transform: uppercase;
+		letter-spacing: 1px;
 	}
-	.carousel {
+
+	.award-entry {
 		display: flex;
-		overflow-x: auto;
-		scroll-snap-type: x mandatory;
-		gap: 1rem;
-		scrollbar-width: none; /* Hide scrollbar */
+		gap: 2rem;
+		margin-bottom: 1.5rem;
+		align-items: baseline;
 	}
-	.carousel::-webkit-scrollbar { display: none; }
-	.carousel img {
-		flex: 0 0 100%; /* Shows one cert at a time */
-		scroll-snap-align: start;
-		width: 100%;
-		border-radius: 8px;
-		border: 1px solid #ddd;
+
+	.year {
+		font-weight: bold;
+		color: var(--accent);
+		min-width: 60px;
 	}
-	.controls {
-		display: flex;
-		gap: 1rem;
-		margin-top: 1rem;
-		justify-content: center;
-	}
-	button {
-		padding: 0.5rem 1rem;
-		cursor: pointer;
+
+	.details h3 { margin: 0; font-size: 1.2rem; }
+	.details p { margin: 0.2rem 0; color: #555; }
+
+	.academic-block { margin-bottom: 2rem; }
+	.academic-block h3 { border-left: 4px solid var(--accent); padding-left: 1rem; margin-bottom: 1rem; }
+	
+	ul { padding-left: 1.5rem; }
+	li { margin-bottom: 0.5rem; }
+
+	.simple-list li { list-style-type: square; color: #444; }
+
+	hr { margin: 4rem 0; border: 0; border-top: 1px solid #eee; }
+
+	@media (max-width: 600px) {
+		.award-entry { flex-direction: column; gap: 0.2rem; }
 	}
 </style>
-
-<script>
-	const carousel = document.getElementById('cert-carousel');
-	const next = document.getElementById('next');
-	const prev = document.getElementById('prev');
-
-	if (carousel && next && prev) {
-		next.onclick = () => {
-			if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
-				carousel.scrollTo({ left: 0, behavior: 'smooth' });
-			} else {
-				carousel.scrollBy({ left: carousel.clientWidth, behavior: 'smooth' });
-			}
-		};
-		prev.onclick = () => {
-			if (carousel.scrollLeft <= 0) {
-				carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
-			} else {
-				carousel.scrollBy({ left: -carousel.clientWidth, behavior: 'smooth' });
-			}
-		};
-	}
-</script>
