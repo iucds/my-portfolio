@@ -24,6 +24,7 @@ import kk1 from '../assets/kk-1.jpg'; import kk2 from '../assets/kk-2.jpg'; impo
 import e_full from '../assets/esac-1.jpg';
 import wh_full from '../assets/wh-1.jpg';
 import irr_full from '../assets/irr-1.jpg';
+import pt_full from '../assets/pt-1.jpeg';
 ---
 
 <!doctype html>
@@ -80,10 +81,21 @@ import irr_full from '../assets/irr-1.jpg';
 					</div>
 					<div class="project-content">
 						<h3>Chairperson: Wings of Solidarity</h3>
-						<p class="short-desc">Facilitating Migrant Worker Befriending Activities.</p>
+						<p class="short-desc">Organising Migrant worker befriending activities for student volunteers.</p>
 					</div>
 				</article>
 
+				<article class="project-card" onclick="document.getElementById('modal-pt').showModal()">
+					<div class="project-image" style={`background-image: url(${pt_full.src});`}>
+						<span class="tag">Volunteering</span>
+						<p class="tech-label">Peer Tutoring • Mentoring</p>
+					</div>
+					<div class="project-content">
+						<h3>Peer Tutor</h3>
+						<p class="short-desc">Peer tutor to support students who need help with studies.</p>
+					</div>
+				</article>
+				
 				<article class="project-card" onclick="document.getElementById('modal-wh').showModal()">
 					<div class="project-image" style={`background-image: url(${wh_full.src});`}>
 						<span class="tag">Volunteering</span>
@@ -126,7 +138,7 @@ import irr_full from '../assets/irr-1.jpg';
 						<div class="carousel-slide"><Image src={v2} alt="" width={800} height={450} /></div>
 						<div class="carousel-slide"><Image src={v3} alt="" width={800} height={450} /></div>
 					</div></div>
-					<p>Technical and community reflections...</p>
+					<p>The Youth Expedition Project is an overseas community service project when students serve the local community by helping in building local infrastructure or teaching the students there. I had the opportunity to participate in this trip and it has open my eyes to the needs of the world and made me more motivated to be a global citizen that cares for the communities beyond Singapore.</p>
 				</div>
 			</dialog>
 
@@ -164,6 +176,16 @@ import irr_full from '../assets/irr-1.jpg';
 				</div>
 			</dialog>
 
+			<dialog id="modal-pt" class="project-modal">
+				<div class="modal-header"><h2>Peer Tutor</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-body">
+					<div class="single-image-container">
+						<Image src={pt_full} alt="" width={800} height={450} />
+					</div>
+					<p>Every Thursday, the School of Engineering will have peer tutoring sessions in which academically weak students are paired with a senior for academic support and encouragement. I tutored Engineering Mathematics 2 and also made notes to help my tutees understand concepts better.</p>
+				</div>
+			</dialog>
+			
 			<dialog id="modal-wh" class="project-modal">
 				<div class="modal-header"><h2>Volunteer: Willing Hearts</h2><button class="close-btn">&times;</button></div>
 				<div class="modal-body">
