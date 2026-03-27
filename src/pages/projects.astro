@@ -109,18 +109,36 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			</div>
 
 			<dialog id="modal-fyp" class="project-modal">
-				<div class="modal-header">
-					<h2>RP2350 High-Speed DAQ</h2>
-					<button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
-				</div>
-				<div class="modal-body">
-					<p><strong>Overview:</strong> Leveraging the dual-core **RP2350** and its **PIO** blocks to achieve nanosecond-precision timing for physics data capture.</p>
-					<ul>
-						<li>Interfaced with 8-channel 12-bit ADCs.</li>
-						<li>Implemented UDP streaming for real-time monitoring.</li>
-					</ul>
-					<a href="https://github.com" class="btn-project">View GitHub Source</a>
-				</div>
+			    <div class="modal-header">
+			        <h2>Data Acquisition for Ion Beam Analysis</h2>
+			        <button class="close-btn" onclick="this.closest('dialog').close()">&times;</button>
+			    </div>
+			    <div class="modal-body">
+			        
+			        <div class="carousel-wrapper">
+			            <div class="carousel-track">
+			                <div class="carousel-slide">
+			                    <img src="/assets/pico2-daq.jpg" alt="RP2350 Prototype" />
+			                    <span class="caption">Prototype using Raspberry Pi Pico 2</span>
+			                </div>
+			                <div class="carousel-slide">
+			                    <img src="/assets/daq-schematic.jpg" alt="Circuit Schematic" />
+			                    <span class="caption">Custom High-Speed ADC Interface Schematic</span>
+			                </div>
+			                <div class="carousel-slide">
+			                    <img src="/assets/daq-graph.jpg" alt="Data Visualization" />
+			                    <span class="caption">Real-time UDP Stream Visualization</span>
+			                </div>
+			            </div>
+			            <div class="carousel-hint">Swipe for more technical views →</div>
+			        </div>
+			        <p><strong>Technical Overview:</strong> Leveraging the **RP2350** and its **PIO** blocks to achieve nanosecond-precision timing...</p>
+			        <ul>
+			            <li>Interfaced with 8-channel 12-bit ADCs.</li>
+			            <li>Implemented UDP streaming for real-time monitoring.</li>
+			        </ul>
+			        <a href="https://github.com" class="btn-project">View GitHub Source</a>
+			    </div>
 			</dialog>
 
 			<dialog id="modal-eic" class="project-modal">
