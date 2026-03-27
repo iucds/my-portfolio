@@ -118,15 +118,15 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			        <div class="carousel-wrapper">
 			            <div class="carousel-track">
 			                <div class="carousel-slide">
-			                    <img src="/assets/pico2-daq.jpg" alt="RP2350 Prototype" />
+			                    <img src="/assets/fyp-1.jpg" alt="RP2350 Prototype" />
 			                    <span class="caption">Prototype using Raspberry Pi Pico 2</span>
 			                </div>
 			                <div class="carousel-slide">
-			                    <img src="/assets/daq-schematic.jpg" alt="Circuit Schematic" />
+			                    <img src="/assets/fyp-2.jpg" alt="Circuit Schematic" />
 			                    <span class="caption">Custom High-Speed ADC Interface Schematic</span>
 			                </div>
 			                <div class="carousel-slide">
-			                    <img src="/assets/daq-graph.jpg" alt="Data Visualization" />
+			                    <img src="/assets/fyp-3.jpg" alt="Data Visualization" />
 			                    <span class="caption">Real-time UDP Stream Visualization</span>
 			                </div>
 			            </div>
@@ -349,4 +349,63 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		font-weight: bold; 
 		margin-top: 1.5rem; 
 	}
+    .carousel-container {
+        width: 100%;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .carousel-track {
+        display: flex;
+        overflow-x: auto; /* Enables horizontal scrolling */
+        scroll-snap-type: x mandatory; /* The "lock" mechanism */
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch; /* Smooth momentum on iPhone */
+        gap: 1.5rem;
+        padding-bottom: 1rem;
+    }
+
+    /* Hide scrollbar for a cleaner look */
+    .carousel-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    .carousel-slide {
+        flex: 0 0 100%; /* Each slide takes 100% of the modal width */
+        scroll-snap-align: start; /* Where the slide "snaps" to */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .carousel-slide img {
+        width: 100%;
+        height: 300px; /* Fixed height for consistency */
+        object-fit: cover;
+        border-radius: 12px;
+        border: 1px solid #eee;
+    }
+
+    .caption {
+        font-size: 0.85rem;
+        color: #666;
+        margin-top: 0.75rem;
+        font-style: italic;
+    }
+
+    .scroll-hint {
+        text-align: right;
+        font-size: 0.7rem;
+        color: #0056b3;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: -0.5rem;
+    }
+
+    /* Tablet/Desktop: Show 1.5 slides to hint there is more content */
+    @media (min-width: 768px) {
+        .carousel-slide {
+            flex: 0 0 85%; 
+        }
+    }
 </style>
