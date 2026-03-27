@@ -29,7 +29,7 @@ import balloonsat1 from '../assets/balloonsat-1.jpg'; import balloonsat2 from '.
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Projects | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<BaseHead title={`Projects`} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
@@ -125,7 +125,19 @@ import balloonsat1 from '../assets/balloonsat-1.jpg'; import balloonsat2 from '.
 						<div class="carousel-slide"><Image src={asiot2} alt="" width={800} height={450} /></div>
 						<div class="carousel-slide"><Image src={asiot3} alt="" width={800} height={450} /></div>
 					</div></div>
-					<p>Project details here...</p>
+					<p>This project focuses the migration of the MuSHR robot’s Jetson Nano codebase from ROS 1 to ROS 2 on Ubuntu 20.04. The process involved troubleshooting issues, including VESC-related problems, while converting and adapting essential modules and portions of code for ROS 2 compatibility. Efforts focused on enabling as many major nodes as possible to restore core functionality. Experimental validation demonstrated successful proof-of-concept operation, achieving reliable motion control of the robot on the ROS 2 Ubuntu 20.04 platform. </p>
+				</div>
+			</dialog>
+
+			<dialog id="modal-cvdl" class="project-modal">
+				<div class="modal-header"><h2>Autonomous Navigation</h2><button class="close-btn">&times;</button></div>
+				<div class="modal-body">
+					<div class="carousel-container"><div class="carousel-track">
+						<div class="carousel-slide"><Image src={cvdl1} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={cvdl2} alt="" width={800} height={450} /></div>
+						<div class="carousel-slide"><Image src={cvdl3} alt="" width={800} height={450} /></div>
+					</div></div>
+					<p>As Singapore becomes an aging society, most households have elderly in them. However, the main risk that these elderly face is the risk of falling and the consequences. To combat this, most households with elderly have surveillance cameras to monitor these elderly to ensure their safety. To support this, this project aims to implement fall detection by torso tracking with YOLO pose estimation so that they can be used to process surveillance footage and alert the user if the elderly or anyone else in the house has fallen.</p>
 				</div>
 			</dialog>
 
