@@ -129,79 +129,7 @@ import balloonsat1 from '../assets/balloonsat-1.jpg'; import balloonsat2 from '.
 				</div>
 			</dialog>
 
-			<dialog id="modal-cvdl" class="project-modal">
-				<div class="modal-header"><h2>Fall Detection AI</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={cvdl1} alt="" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={cvdl2} alt="" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={cvdl3} alt="" width={800} height={450} /></div>
-					</div></div>
-					<p>Project details here...</p>
-				</div>
-			</dialog>
-
-			<dialog id="modal-ifs" class="project-modal">
-				<div class="modal-header"><h2>Indoor Farming System</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={ifs1} alt="" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={ifs2} alt="" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={ifs3} alt="" width={800} height={450} /></div>
-					</div></div>
-					<p>Project details here...</p>
-				</div>
-			</dialog>
-
-			<dialog id="modal-bustech" class="project-modal">
-				<div class="modal-header"><h2>Bus Charging Port</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={bustech1} alt="" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={bustech2} alt="" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={bustech3} alt="" width={800} height={450} /></div>
-					</div></div>
-					<p>Project details here...</p>
-				</div>
-			</dialog>
-
-			<dialog id="modal-nrc" class="project-modal">
-				<div class="modal-header"><h2>NRC Robotics</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={nrc1} alt="" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={nrc2} alt="" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={nrc3} alt="" width={800} height={450} /></div>
-					</div></div>
-					<p>Project details here...</p>
-				</div>
-			</dialog>
-
-			<dialog id="modal-ysap" class="project-modal">
-				<div class="modal-header"><h2>Health Monitoring DAQ</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={ysap1} alt="" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={ysap2} alt="" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={ysap3} alt="" width={800} height={450} /></div>
-					</div></div>
-					<p>Project details here...</p>
-				</div>
-			</dialog>
-
-			<dialog id="modal-balloonsat" class="project-modal">
-				<div class="modal-header"><h2>BalloonSat Telemetry</h2><button class="close-btn">&times;</button></div>
-				<div class="modal-body">
-					<div class="carousel-container"><div class="carousel-track">
-						<div class="carousel-slide"><Image src={balloonsat1} alt="" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={balloonsat2} alt="" width={800} height={450} /></div>
-						<div class="carousel-slide"><Image src={balloonsat3} alt="" width={800} height={450} /></div>
-					</div></div>
-					<p>Project details here...</p>
-				</div>
-			</dialog>
-
-		</main>
+			</main>
 		<Footer />
 
 		<script>
@@ -219,12 +147,52 @@ import balloonsat1 from '../assets/balloonsat-1.jpg'; import balloonsat2 from '.
 </html>
 
 <style>
-	main { margin-top: 80px; max-width: 1100px; margin-left: auto; margin-right: auto; padding: 2rem; width: 100%; }
-	.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; width: 100%; }
-	.projects-hero { text-align: center; margin-bottom: 4rem; }
-	
-	/* CARDS */
-	.project-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 5px solid #0056b3; cursor: pointer; display: flex; flex-direction: column; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease; }
+	/* --- MATCHING HEADER SYNC --- */
+	/* Ensuring the main content doesn't get hidden behind the sticky header */
+	main { 
+		margin-top: 120px; /* Aligned with your Academic page spacing */
+		max-width: 1100px; 
+		margin-left: auto; 
+		margin-right: auto; 
+		padding: 2rem; 
+		width: 100%; 
+	}
+
+	/* Hero Section matches your portfolio's typography */
+	.projects-hero { 
+		text-align: center; 
+		margin-bottom: 4rem; 
+	}
+
+	.projects-hero h1 {
+		color: #0056b3;
+		font-size: 2.8rem; /* Scaled to match Academic titles */
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+
+	/* --- GRID & CARDS --- */
+	.projects-grid { 
+		display: grid; 
+		grid-template-columns: 1fr 1fr; 
+		gap: 2.5rem; 
+		width: 100%; 
+	}
+
+	.project-card { 
+		background: white; 
+		border-radius: 12px; 
+		overflow: hidden; 
+		box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+		border-top: 5px solid #0056b3; 
+		cursor: pointer; 
+		display: flex; 
+		flex-direction: column; 
+		opacity: 0; 
+		transform: translateY(40px); 
+		transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease; 
+	}
+
 	.project-card.reveal { opacity: 1; transform: translateY(0); }
 	.project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15); }
 	
@@ -236,7 +204,6 @@ import balloonsat1 from '../assets/balloonsat-1.jpg'; import balloonsat2 from '.
 		align-items: flex-start; 
 		justify-content: flex-start; 
 		gap: 0.5rem; 
-		/* UNCHOPPED THUMBNAILS */
 		background-size: contain; 
 		background-repeat: no-repeat;
 		background-position: center;
@@ -248,31 +215,22 @@ import balloonsat1 from '../assets/balloonsat-1.jpg'; import balloonsat2 from '.
 	.tech-label { font-family: monospace; color: #0056b3; background: rgba(255, 255, 255, 0.9); padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: bold; font-size: 0.8rem; margin: 0; z-index: 2; }
 	.project-content { padding: 1.5rem; flex-grow: 1; }
 
-	/* CAROUSEL (UNCROPPED) */
+	/* --- CAROUSEL & MODALS --- */
 	.carousel-container { width: 100%; margin-bottom: 2rem; }
 	.carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 1rem; }
 	.carousel-track::-webkit-scrollbar { display: none; }
-	.carousel-slide { 
-		flex: 0 0 100%; 
-		scroll-snap-align: start; 
-		background: #f0f0f0; /* Soft background for letterboxing */
-		border-radius: 12px;
-		overflow: hidden;
-	}
-	.carousel-slide img { 
-		width: 100%; 
-		height: 400px; 
-		object-fit: contain; /* THE KEY FIX: SHOW FULL PICTURE */
-	}
+	.carousel-slide { flex: 0 0 100%; scroll-snap-align: start; background: #f0f0f0; border-radius: 12px; overflow: hidden;}
+	.carousel-slide img { width: 100%; height: 400px; object-fit: contain; }
 	
-	.scroll-hint { text-align: right; font-size: 0.7rem; color: #0056b3; font-weight: bold; margin-top: 0.5rem; }
-	
-	/* MODALS */
 	dialog { border: none; border-radius: 16px; padding: 0; width: 90%; max-width: 800px; border-top: 8px solid #0056b3; }
 	dialog::backdrop { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); }
 	.modal-header { display: flex; justify-content: space-between; padding: 1.5rem 2rem; background: #f8f9fa; }
 	.modal-body { padding: 2rem; line-height: 1.7; }
 	.close-btn { background: none; border: none; font-size: 2rem; cursor: pointer; color: #999; }
 	
-	@media (max-width: 850px) { .projects-grid { grid-template-columns: 1fr; } .carousel-slide { flex: 0 0 90%; } }
+	@media (max-width: 850px) { 
+		main { margin-top: 100px; }
+		.projects-grid { grid-template-columns: 1fr; } 
+		.carousel-slide { flex: 0 0 90%; } 
+	}
 </style>
