@@ -1,157 +1,130 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
-
-// Major highlights from your list
-const majorWins = [
-	{ title: "National Robotics Competition (Tertiary)", rank: "1st Place", year: "2023" },
-	{ title: "Global Robotic Games (Mobile Robotics IV)", rank: "1st Place", year: "2023" },
-	{ title: "BusTech Grand Challenge (Tertiary)", rank: "2nd Runner Up", year: "2025" },
-	{ title: "Young Inventor’s Journal", rank: "Gold Award", year: "2022" },
-    { title: "Engineering Innovation Challenge", rank: "1st Runner Up", year: "2020" }
-];
-
-// Grouping the heavy module prize and performance data
-const academicTimeline = [
-	{ 
-        year: "2025", 
-        highlight: "Most Outstanding Performance for Level 2.2 (Engineering Science)",
-        prizes: ["Applied Mathematics 3", "Microcontroller and Interfacing", "Physics 2"],
-        others: ["Director’s List"]
-    },
-	{ 
-        year: "2024", 
-        highlight: "Most Outstanding Performance for Level 1.2",
-        prizes: ["Physics 1", "Applied Mathematics 2A", "Analogue Electronics"],
-        others: ["3rd Most Outstanding Performance (Level 2.1)", "Director’s List (Multiple)"]
-    },
-	{ 
-        year: "2023", 
-        highlight: "Most Outstanding Performance for Level 1.1",
-        prizes: ["Applied Mathematics 1", "Electrical Engineering Fundamentals", "Engineering and Society", "Mechanical Engineering Fundamentals"],
-        others: ["Director’s List"]
-    }
-];
-
-// Image paths for the carousel at the bottom
-const certificates = [
-	{ src: "/certs/nrc-gold.jpg", alt: "National Robotics Competition Gold" },
-	{ src: "/certs/grg-first.jpg", alt: "Global Robotic Games 1st Place" },
-	{ src: "/certs/bustech.jpg", alt: "BusTech Grand Challenge" },
-	{ src: "/certs/directors-list.jpg", alt: "Director's List Certificate" },
-];
+import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Achievements">
 	<main>
-		<section class="section">
-			<h2 class="section-title">Competition Highlights</h2>
-			<div class="award-grid">
-				{majorWins.map(win => (
-					<div class="award-card">
-						<span class="year">{win.year}</span>
-						<h3>{win.rank}</h3>
-						<p>{win.title}</p>
-					</div>
-				))}
+		<section class="content">
+			<h1>Achievements & Awards</h1>
+			
+			<div class="category">
+				<h2>🏆 Major Competition Wins</h2>
+				<ul>
+					<li><strong>2025:</strong> BusTech Grand Challenge (Tertiary Category) — 2nd Runner Up</li>
+					<li><strong>2023:</strong> National Robotics Competition (Tertiary Division) — First Place</li>
+					<li><strong>2023:</strong> Global Robotic Games (Mobile Robotics IV) — First Place</li>
+					<li><strong>2022:</strong> Young Inventor’s Journal — Gold Award</li>
+					<li><strong>2020:</strong> Engineering Innovation Challenge — 1st Runner Up</li>
+					<li><strong>2020:</strong> Indonesia International Applied Science Project Olympiad — Silver Award</li>
+				</ul>
 			</div>
-		</section>
 
-		<section class="section">
-			<h2 class="section-title">Academic Excellence</h2>
-			<div class="timeline">
-				{academicTimeline.map(item => (
-					<div class="timeline-group">
-						<div class="timeline-header">
-							<span class="timeline-year">{item.year}</span>
-							<h3 class="timeline-top-award">{item.highlight}</h3>
-						</div>
-						<div class="timeline-body">
-							<div class="prize-tag-container">
-								{item.prizes.map(prize => <span class="prize-tag">Module Prize: {prize}</span>)}
-							</div>
-							<p class="others-text">Additional: {item.others.join(' • ')}</p>
-						</div>
-					</div>
-				))}
+			<hr />
+
+			<div class="category">
+				<h2>🎓 Academic Excellence</h2>
+				
+				<h3>2025</h3>
+				<p><strong>Most Outstanding Performance for Level 2.2 in Engineering Science</strong></p>
+				<p>Director’s List | Module Prizes: Applied Mathematics 3, Microcontroller and Interfacing, Physics 2</p>
+
+				<h3>2024</h3>
+				<p><strong>Most Outstanding Performance for Level 1.2 in Engineering Science</strong></p>
+				<p>3rd Most Outstanding Performance for Level 2.1 | Director’s List</p>
+				<p>Module Prizes: Physics 1, Applied Mathematics 2A, Analogue Electronics</p>
+
+				<h3>2023</h3>
+				<p><strong>Most Outstanding Performance for Level 1.1 in Engineering Science</strong></p>
+				<p>Director’s List | Module Prizes: Applied Mathematics 1, Electrical Engineering, Engineering and Society, Mechanical Engineering</p>
 			</div>
-		</section>
 
-		<section class="carousel-section">
-			<h2 class="section-title">Certification Gallery</h2>
-			<div class="carousel-container">
-				<div class="carousel-viewport" id="carousel">
-					{certificates.map(cert => (
-						<div class="carousel-item">
-							<img src={cert.src} alt={cert.alt} />
-							<p>{cert.alt}</p>
+			<hr />
+
+			<div class="category">
+				<h2>📜 Certifications</h2>
+				<div class="carousel-container">
+					<div class="carousel" id="cert-carousel">
+						<img src="/certs/nrc.jpg" alt="NRC 2023" />
+						<img src="/certs/grg.jpg" alt="Global Robotic Games" />
+						<img src="/certs/directors.jpg" alt="Director's List" />
+						<img src="/certs/math-olympiad.jpg" alt="SASMO Gold" />
 						</div>
-					))}
+					<div class="controls">
+						<button id="prev">Back</button>
+						<button id="next">Next</button>
+					</div>
 				</div>
-				<button class="nav-btn prev" id="prev">‹</button>
-				<button class="nav-btn next" id="next">›</button>
 			</div>
 		</section>
 	</main>
 </Layout>
 
 <style>
-	main { max-width: 900px; margin: 0 auto; padding: 4rem 1.5rem; }
-	.section { margin-bottom: 5rem; }
-	.section-title { font-size: 1.75rem; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; margin-bottom: 2rem; }
+	main {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 2rem;
+		line-height: 1.6;
+	}
+	h1 { font-size: 2.5rem; margin-bottom: 2rem; }
+	h2 { color: var(--accent); margin-top: 2rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
+	h3 { margin-top: 1.5rem; margin-bottom: 0.5rem; }
+	p { margin: 0.25rem 0; }
+	ul { padding-left: 1.2rem; }
+	li { margin-bottom: 0.5rem; }
+	hr { margin: 3rem 0; border: 0; border-top: 1px solid #eee; }
 
-	/* Award Cards */
-	.award-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
-	.award-card { background: #fff; border: 1px solid #eee; padding: 1.5rem; border-radius: 12px; transition: 0.3s; }
-	.award-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-	.year { color: var(--accent); font-weight: bold; font-size: 0.9rem; }
-	.award-card h3 { margin: 0.5rem 0; font-size: 1.25rem; color: #111; }
-
-	/* Academic Timeline */
-	.timeline-group { margin-bottom: 3rem; border-left: 2px solid #eee; padding-left: 2rem; position: relative; }
-	.timeline-group::before { content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
-	.timeline-year { font-size: 1.1rem; font-weight: bold; color: var(--accent); }
-	.timeline-top-award { margin: 0.25rem 0 1rem 0; font-size: 1.3rem; }
-	.prize-tag-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
-	.prize-tag { background: #f0f4f8; color: #475569; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; border: 1px solid #e2e8f0; }
-	.others-text { font-size: 0.9rem; color: #64748b; font-style: italic; }
-
-	/* Carousel Styles */
-	.carousel-section { background: #fafafa; padding: 4rem 1.5rem; margin: 0 -1.5rem; text-align: center; }
-	.carousel-container { position: relative; max-width: 1000px; margin: 0 auto; }
-	.carousel-viewport { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 20px; padding: 10px 0; scrollbar-width: none; }
-	.carousel-viewport::-webkit-scrollbar { display: none; }
-	.carousel-item { flex: 0 0 300px; scroll-snap-align: center; }
-	.carousel-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-	.nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.2); cursor: pointer; z-index: 10; font-size: 1.5rem; }
-	.prev { left: -20px; }
-	.next { right: -20px; }
-
-	@media (max-width: 768px) {
-		.nav-btn { display: none; }
-		.timeline-group { padding-left: 1.5rem; }
+	/* Simple Carousel Logic */
+	.carousel-container {
+		margin-top: 1rem;
+		position: relative;
+	}
+	.carousel {
+		display: flex;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		gap: 1rem;
+		scrollbar-width: none; /* Hide scrollbar */
+	}
+	.carousel::-webkit-scrollbar { display: none; }
+	.carousel img {
+		flex: 0 0 100%; /* Shows one cert at a time */
+		scroll-snap-align: start;
+		width: 100%;
+		border-radius: 8px;
+		border: 1px solid #ddd;
+	}
+	.controls {
+		display: flex;
+		gap: 1rem;
+		margin-top: 1rem;
+		justify-content: center;
+	}
+	button {
+		padding: 0.5rem 1rem;
+		cursor: pointer;
 	}
 </style>
 
 <script>
-	const carousel = document.getElementById('carousel');
+	const carousel = document.getElementById('cert-carousel');
 	const next = document.getElementById('next');
 	const prev = document.getElementById('prev');
 
 	if (carousel && next && prev) {
 		next.onclick = () => {
-			const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-			if (carousel.scrollLeft >= maxScroll - 5) {
+			if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
 				carousel.scrollTo({ left: 0, behavior: 'smooth' });
 			} else {
-				carousel.scrollBy({ left: 320, behavior: 'smooth' });
+				carousel.scrollBy({ left: carousel.clientWidth, behavior: 'smooth' });
 			}
 		};
 		prev.onclick = () => {
-			if (carousel.scrollLeft <= 5) {
+			if (carousel.scrollLeft <= 0) {
 				carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
 			} else {
-				carousel.scrollBy({ left: -320, behavior: 'smooth' });
+				carousel.scrollBy({ left: -carousel.clientWidth, behavior: 'smooth' });
 			}
-		}
+		};
 	}
 </script>
