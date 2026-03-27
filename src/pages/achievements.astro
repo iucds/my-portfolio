@@ -86,7 +86,6 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		<Footer />
 
 		<script>
-			// Grow the blue line based on scroll percentage
 			const updateScrollLine = () => {
 				const scrollLine = document.getElementById('scroll-line');
 				if (scrollLine) {
@@ -98,13 +97,13 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 			};
 
 			window.addEventListener('scroll', updateScrollLine);
-			// Initial call to set position on load
 			updateScrollLine();
 		</script>
 	</body>
 </html>
 
 <style>
+	/* [STYLES REMAIN THE SAME AS PREVIOUS VERSION] */
 	.timeline-wrapper {
 		max-width: 1000px;
 		margin: 0 auto;
@@ -119,16 +118,13 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		font-weight: 700;
 	}
 
-	/* Stats Dashboard */
 	.stats-banner {
 		display: flex;
 		justify-content: center;
 		gap: 4rem;
 		margin-bottom: 5rem;
 	}
-	.stat-box {
-		text-align: center;
-	}
+	.stat-box { text-align: center; }
 	.stat-number {
 		display: block;
 		font-size: 3rem;
@@ -144,7 +140,6 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		font-weight: 600;
 	}
 
-	/* Timeline Container */
 	.timeline-container {
 		position: relative;
 		padding-left: 60px;
@@ -171,10 +166,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		transition: height 0.1s ease-out;
 	}
 
-	.timeline-item {
-		position: relative;
-		margin-bottom: 5rem;
-	}
+	.timeline-item { position: relative; margin-bottom: 5rem; }
 
 	.circle {
 		position: absolute;
@@ -189,7 +181,6 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		box-shadow: 0 0 0 4px #0056b3;
 	}
 
-	/* Content Cards */
 	.content-card {
 		background: white;
 		padding: 2.5rem;
@@ -199,37 +190,13 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		transition: transform 0.3s ease;
 	}
 
-	.content-card:hover {
-		transform: translateY(-5px);
-	}
+	.content-card:hover { transform: translateY(-5px); }
 
-	.qualification {
-		font-size: 1.6rem;
-		margin: 0 0 0.25rem 0;
-		color: #1a1a1a;
-	}
+	.qualification { font-size: 1.6rem; margin: 0 0 0.25rem 0; color: #1a1a1a; }
+	.duration { font-style: italic; color: #0056b3; margin-bottom: 1.5rem; font-weight: 500; }
+	.date-sub { font-size: 0.9rem; color: #666; margin: -0.5rem 0 1rem 1.2rem; font-style: italic; }
 
-	.duration {
-		font-style: italic;
-		color: #0056b3;
-		margin-bottom: 1.5rem;
-		font-weight: 500;
-	}
-
-	.date-sub {
-		font-size: 0.9rem;
-		color: #666;
-		margin: -0.5rem 0 1rem 1.2rem;
-		font-style: italic;
-	}
-
-	/* Achievement List */
-	.achievement-list {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-
+	.achievement-list { list-style: none; padding: 0; margin: 0; }
 	.achievement-list li {
 		margin-bottom: 0.8rem;
 		padding-left: 1.5rem;
@@ -246,12 +213,8 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		font-size: 1.2rem;
 	}
 
-	.highlight {
-		font-weight: 700;
-		color: #000;
-	}
+	.highlight { font-weight: 700; color: #000; }
 
-	/* Button Styling */
 	.timeline-btn {
 		display: inline-block;
 		margin-top: 1.5rem;
@@ -270,7 +233,6 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
 	}
 
-	/* Mobile Responsiveness */
 	@media (max-width: 768px) {
 		.timeline-wrapper { padding: 2rem 1rem; }
 		.stats-banner { gap: 2rem; flex-direction: column; margin-bottom: 3rem; }
